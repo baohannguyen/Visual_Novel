@@ -2,78 +2,131 @@ declare namespace Novel {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let transition: {
-        hearts: {
+        stripes: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        boxes: {
             duration: number;
             alpha: string;
             edge: number;
         };
     };
-    let sound: {
-        theme1: string;
-        theme2: string;
+    let sounds: {
+        chuckle_female: string;
+        door_closing: string;
+        door_opening: string;
+        cafe_door: string;
+        gasping: string;
+        hmm: string;
+        oh: string;
+        rain: string;
+        sigh_male: string;
+        sigh_female: string;
+        spoon_stir: string;
+    };
+    let music: {
+        main_theme: string;
+        cafe_theme: string;
     };
     let locations: {
+        classroom: {
+            name: string;
+            background: string;
+        };
+        cafe: {
+            name: string;
+            background: string;
+        };
+        living_room: {
+            name: string;
+            background: string;
+        };
         park: {
             name: string;
             background: string;
         };
-        sunset: {
+        street: {
+            name: string;
+            background: string;
+        };
+        office: {
+            name: string;
+            background: string;
+        };
+        blackScreen: {
             name: string;
             background: string;
         };
     };
     let characters: {
         narrator: {};
-        protagonist: {
-            name: string;
-        };
-        aisaka: {
+        celeste: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                angry: string;
-                happy: string;
-                upset: string;
+                neutral_new: string;
+                school: string;
             };
         };
-        komi: {
+        celeste_mum: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                angry: string;
-                happy: string;
-                upset: string;
+                sad: string;
             };
         };
-    };
-    let items: {
-        item1: {
+        lucia: {
             name: string;
-            description: string;
-            image: string;
-            static: boolean;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                neutral: string;
+            };
+        };
+        sophie: {
+            name: string;
+        };
+        evan: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {};
+        };
+        customer: {
+            name: string;
         };
     };
+    let items: {};
     let dataForSave: {
-        nameProtagonist: string;
-        aisakaScore: number;
+        celesteScore: number;
         pickedMeterScene: boolean;
-        interrupt: boolean;
-        characterPoints: number;
     };
-    function getAnimation(): ƒS.AnimationDefinition;
+    function examAnimation(): ƒS.AnimationDefinition;
+    function seeCredits(): void;
+    function seeDrinkList(): void;
+    function seeIngredientList(): void;
 }
 declare namespace Novel {
-    function firstScene(): ƒS.SceneReturn;
+    function scene_1(): ƒS.SceneReturn;
 }
 declare namespace Novel {
+    function scene_2(): ƒS.SceneReturn;
 }
 declare namespace Novel {
-    function meterBar(): ƒS.SceneReturn;
+    function scene_3(): ƒS.SceneReturn;
 }
 declare namespace Novel {
-    function secondScene(): ƒS.SceneReturn;
+    function scene_4(): ƒS.SceneReturn;
 }
 declare namespace Novel {
-    function thirdScene(): ƒS.SceneReturn;
+    function scene_5(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_6(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_7(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_8(): ƒS.SceneReturn;
 }
