@@ -79,8 +79,7 @@ namespace Novel {
             name: "Celeste",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                // neutral: "Images/celeste_smiling_transparent.png"
-                neutral_new: "Images/aisaka_happy.png",
+                neutral_new: "Images/2.png",
                 school: "Images/1.png"
 
             }
@@ -90,7 +89,7 @@ namespace Novel {
             name: "Mutter",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                sad: "Images/aisaka_happy.png"
+                sad: "Images/mum.png"
 
             }
 
