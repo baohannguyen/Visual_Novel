@@ -35,6 +35,11 @@ namespace Novel {
             }
         };
 
+        // Code um die Bar auszublenden (die ersten zwei Codes muss man ausblenden)
+        dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
+        // document.getElementById("scoreForAisaka").style.display = "none";
+
         //ƒS.Speech.setTickerDelays(40, 500);
         let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
@@ -51,13 +56,13 @@ namespace Novel {
         ƒS.Sound.play(sounds.sigh_female, 1);
         await signalDelay2();
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(30, 100));
-        await ƒS.update(1);
+        await ƒS.update(2);
         await signalDelay1();
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
-        await ƒS.Character.animate(characters.celeste_mum, characters.celeste_mum.pose.sad, examAnimation());
-        //await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.sad, ƒS.positionPercent(70, 105));
-        await ƒS.update(1);
+        // await ƒS.Character.animate(characters.celeste_mum, characters.celeste_mum.pose.sad, examAnimation());
+        await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.sad, ƒS.positionPercent(70, 105));
+        await ƒS.update(2);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX02);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX03);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX04);

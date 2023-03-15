@@ -69,8 +69,7 @@ var Novel;
             name: "Celeste",
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                // neutral: "Images/celeste_smiling_transparent.png"
-                neutral_new: "Images/aisaka_happy.png",
+                neutral_new: "Images/2.png",
                 school: "Images/1.png"
             }
         },
@@ -78,7 +77,7 @@ var Novel;
             name: "Mutter",
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                sad: "Images/aisaka_happy.png"
+                sad: "Images/mum.png"
             }
         },
         lucia: {
@@ -257,6 +256,10 @@ var Novel;
                 TX12: "Danke mein Schatz."
             }
         };
+        // Code um die Bar auszublenden (die ersten zwei Codes muss man ausblenden)
+        Novel.dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
+        // document.getElementById("scoreForAisaka").style.display = "none";
         //ƒS.Speech.setTickerDelays(40, 500);
         let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(1)]);
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
@@ -272,13 +275,13 @@ var Novel;
         Novel.ƒS.Sound.play(Novel.sounds.sigh_female, 1);
         await signalDelay2();
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(30, 100));
-        await Novel.ƒS.update(1);
+        await Novel.ƒS.update(2);
         await signalDelay1();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
-        await Novel.ƒS.Character.animate(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.sad, Novel.examAnimation());
-        //await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.sad, ƒS.positionPercent(70, 105));
-        await Novel.ƒS.update(1);
+        // await ƒS.Character.animate(characters.celeste_mum, characters.celeste_mum.pose.sad, examAnimation());
+        await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.sad, Novel.ƒS.positionPercent(70, 105));
+        await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX04);
