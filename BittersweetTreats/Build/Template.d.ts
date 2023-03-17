@@ -102,6 +102,8 @@ declare namespace Novel {
         pickedMeterScene: boolean;
     };
     function examAnimation(): ƒS.AnimationDefinition;
+    function increaseSound(): void;
+    function decreaseSound(): void;
     function seeCredits(): void;
     function seeDrinkList(): void;
     function seeIngredientList(): void;

@@ -126,10 +126,29 @@ var Novel;
         save: "Save",
         load: "Load",
         credits: "Credits",
+        volumeUp: "+",
+        volumeDown: "-",
         drinkList: "Getränkeliste",
         ingredientList: "Zutatenliste"
     };
     let gameMenu;
+    //Lautstärke Anpassung
+    let volume = 2.0;
+    function increaseSound() {
+        if (volume >= 100)
+            return;
+        volume += 0.5;
+        Novel.ƒS.Sound.setMasterVolume(volume);
+    }
+    Novel.increaseSound = increaseSound;
+    function decreaseSound() {
+        if (volume <= 0)
+            return;
+        volume -= 0.5;
+        Novel.ƒS.Sound.setMasterVolume(volume);
+        console.log("Test");
+    }
+    Novel.decreaseSound = decreaseSound;
     // true = Menü ist offen 
     let menuIsOpen = true;
     function seeCredits() {
@@ -162,6 +181,12 @@ var Novel;
                 break;
             case menuButtons.credits:
                 seeCredits();
+                break;
+            case menuButtons.volumeUp:
+                increaseSound();
+                break;
+            case menuButtons.volumeDown:
+                decreaseSound();
                 break;
             case menuButtons.drinkList:
                 seeDrinkList();

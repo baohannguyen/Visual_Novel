@@ -156,11 +156,32 @@ namespace Novel {
         save: "Save",
         load: "Load",
         credits: "Credits",
+        volumeUp: "+",
+        volumeDown: "-",
         drinkList: "Getränkeliste",
         ingredientList: "Zutatenliste"
     };
 
     let gameMenu: ƒS.Menu;
+
+    //Lautstärke Anpassung
+    let volume: number = 2.0;
+
+    export function increaseSound(): void {
+        if (volume >= 100)
+        return;
+        volume += 0.5;
+        ƒS.Sound.setMasterVolume(volume);
+    }
+
+    export function decreaseSound(): void {
+        if (volume <= 0)
+        return;
+        volume -= 0.5;
+        ƒS.Sound.setMasterVolume(volume);
+        console.log("Test");
+        
+    }
 
     // true = Menü ist offen 
     let menuIsOpen: boolean = true;
@@ -204,6 +225,12 @@ namespace Novel {
             case menuButtons.credits:
                 seeCredits();
                 break;
+            case menuButtons.volumeUp:
+                increaseSound();
+                break;
+            case menuButtons.volumeDown:
+                decreaseSound();
+                break;   
             case menuButtons.drinkList:
                 seeDrinkList();
                 break;
