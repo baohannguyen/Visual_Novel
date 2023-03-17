@@ -36,9 +36,9 @@ dialog[type="splash"] > p {
 
 #FudgeStoryLogo {
   display: block;
-  width: 50%;
-  margin-right: auto;
-  margin-left: auto;
+  width: 30%;
+  /* margin-right: auto;
+  margin-left: auto; */
 }
 
  /* dialog[type=splash] { 
@@ -85,12 +85,18 @@ name {
   margin-left: 5px;
 }
 
+.menuButtonsCSS {
+  color: white;
+  background-color: #e9e0c8;
+}
+
 /* .choicesCSSClass {
   width: 300px;
   padding: 20px;
   
  
 } */
+
 
 meter::-webkit-meter-bar { /*webkit ist für chrome */
   background-color: #ececec;
