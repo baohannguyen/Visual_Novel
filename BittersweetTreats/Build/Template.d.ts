@@ -66,7 +66,7 @@ declare namespace Novel {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                neutral_new: string;
+                neutral: string;
                 school: string;
             };
         };

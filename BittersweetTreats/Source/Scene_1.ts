@@ -46,7 +46,7 @@ namespace Novel {
         // let signalDelay3: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(3)]); //verzögert die Zeit zwischen den Texten
 
         // ƒS.Sound.fade(music.main_theme, 0.5, 5, true);
-        ƒS.Sound.play(music.main_theme, 0.5, true);
+        // ƒS.Sound.play(music.main_theme, 0.5, true);
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.living_room);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
@@ -55,7 +55,7 @@ namespace Novel {
         await signalDelay2();
         ƒS.Sound.play(sounds.sigh_female, 1);
         await signalDelay2();
-        await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(30, 100));
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral, ƒS.positionPercent(30, 100));
         await ƒS.update(2);
         await signalDelay1();
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX01);

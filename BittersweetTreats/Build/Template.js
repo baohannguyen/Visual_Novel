@@ -69,7 +69,7 @@ var Novel;
             name: "Celeste",
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                neutral_new: "Images/Female Sprite by Sutemo1.png",
+                neutral: "Images/Celeste_normal2.png",
                 school: "Images/1.png"
             }
         },
@@ -290,7 +290,7 @@ var Novel;
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         // let signalDelay3: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(3)]); //verzögert die Zeit zwischen den Texten
         // ƒS.Sound.fade(music.main_theme, 0.5, 5, true);
-        Novel.ƒS.Sound.play(Novel.music.main_theme, 0.5, true);
+        // ƒS.Sound.play(music.main_theme, 0.5, true);
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.living_room);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
@@ -299,7 +299,7 @@ var Novel;
         await signalDelay2();
         Novel.ƒS.Sound.play(Novel.sounds.sigh_female, 1);
         await signalDelay2();
-        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(30, 100));
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral, Novel.ƒS.positionPercent(30, 100));
         await Novel.ƒS.update(2);
         await signalDelay1();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
@@ -550,7 +550,7 @@ var Novel;
         await Novel.ƒS.update(Novel.transition.boxes.duration, Novel.transition.boxes.alpha, Novel.transition.boxes.edge);
         await signalDelay2();
         await Novel.ƒS.update();
-        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(50, 100));
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral, Novel.ƒS.positionPercent(50, 100));
         await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
