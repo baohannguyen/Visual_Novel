@@ -69,7 +69,8 @@ var Novel;
             name: "Celeste",
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                neutral: "Images/Celeste_normal2.png",
+                neutral: "Images/Celeste_neutral.png",
+                smile: "Images/Celeste_smile.png",
                 school: "Images/1.png"
             }
         },
@@ -77,7 +78,7 @@ var Novel;
             name: "Mutter",
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                sad: "Images/mum.png"
+                sad: "Images/Celeste_normal2.png"
             }
         },
         lucia: {
@@ -300,12 +301,12 @@ var Novel;
         Novel.ƒS.Sound.play(Novel.sounds.sigh_female, 1);
         await signalDelay2();
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral, Novel.ƒS.positionPercent(30, 100));
-        await Novel.ƒS.update(2);
+        await Novel.ƒS.update(1);
         await signalDelay1();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
-        // await ƒS.Character.animate(characters.celeste_mum, characters.celeste_mum.pose.sad, examAnimation());
-        await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.sad, Novel.ƒS.positionPercent(70, 105));
+        //await ƒS.Character.animate(characters.celeste_mum, characters.celeste_mum.pose.sad, examAnimation());
+        await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.sad, Novel.ƒS.positionPercent(70, 100));
         await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX03);
@@ -318,6 +319,9 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX06);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX07);
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.smile, Novel.ƒS.positionPercent(30, 100));
+        await Novel.ƒS.Character.hide(Novel.characters.celeste);
+        await Novel.ƒS.update();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX08);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX07);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX08);
