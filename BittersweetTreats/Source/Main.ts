@@ -81,7 +81,11 @@ namespace Novel {
             pose: {
                 neutral: "Images/Celeste_neutral.png",
                 smile: "Images/Celeste_smile.png",
-                school: "Images/1.png"
+                school: "Images/Celeste_school_neutral.png",
+                school_smile: "Images/Celeste_school_smile2.png",
+                cafe_smile: "Images/Celeste_cafe_smile.png",
+                cafe_smile2: "Images/Celeste_cafe_smile2.png",
+                cafe_happy: "Images/Celeste_cafe_happy.png"
 
             }
 
@@ -99,7 +103,8 @@ namespace Novel {
             name: "Lucia",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                neutral: "Images/10.png"
+                neutral: "Images/lucia_neutral.png",
+                smile: "Images/lucia_smile.png"
 
             }
 
@@ -112,6 +117,8 @@ namespace Novel {
             name: "Evan",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
+                smile: "Images/Evan_smile.png",
+                smile2: "Images/Evan_smile2.png"
 
             }
 
@@ -284,12 +291,12 @@ namespace Novel {
         gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
-            { scene: scene_1, name: "Conversation in the living room" },
+            // { scene: scene_1, name: "Conversation in the living room" },
             { scene: scene_2, name: "School" },
             { scene: scene_3, name: "Narrator" },
-            { scene: scene_4, name: "Talk with Evan" },
-            { scene: scene_5, name: "Mixing Drinks" }
-            // { scene: scene_6, name: "Good Ending" },
+            { scene: scene_4, name: "Talk with Evan" }
+            // { scene: scene_5, name: "Mixing Drinks" }
+            // { scene: scene_6, name: "Good Ending" }
             // { scene: scene_7, name: "Normal Ending" },
             // { scene: scene_8, name: "Bad Ending" }
         ];

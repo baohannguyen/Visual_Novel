@@ -33,21 +33,28 @@ namespace Novel {
             }
         };
 
+        dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
+
         let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
-        ƒS.Sound.play(music.cafe_theme, 0.3, true);
+        //ƒS.Sound.play(music.cafe_theme, 0.3, true);
         await ƒS.Location.show(locations.cafe);
         await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
         await signalDelay2();
         await ƒS.update();
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile, ƒS.positionPercent(25, 100));
+        await ƒS.update(3);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX02);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX03);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
+        await ƒS.Character.show(characters.evan, characters.evan.pose.smile, ƒS.positionPercent(70, 105));
+        await ƒS.update(2);
         await ƒS.Speech.tell(characters.evan, text.evan.TX01);
         await ƒS.Speech.tell(characters.evan, text.evan.TX02);
         await ƒS.Speech.tell(characters.evan, text.evan.TX03);
@@ -63,13 +70,16 @@ namespace Novel {
         await ƒS.Speech.tell(characters.evan, text.evan.TX12);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX09);
+        await ƒS.Character.hide(characters.celeste);
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile2, ƒS.positionPercent(25, 100));
+        await ƒS.update(0.3);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX10);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX11);
         await ƒS.Speech.tell(characters.evan, text.evan.TX13);
 
         await signalDelay1();
 
-        await ƒS.Text.print("Oben im Menü siehst jetzt zwei neue Bereiche, die Getränke- und Zutatenliste.<p>Auf die beiden Listen kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst</p>");
+        await ƒS.Text.print("Oben im Menü siehs du den Bereich <i>Getränkeliste</i>.<p>Auf die Liste kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst</p>");
         ƒS.Text.close();
         
 

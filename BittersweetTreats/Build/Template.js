@@ -71,7 +71,11 @@ var Novel;
             pose: {
                 neutral: "Images/Celeste_neutral.png",
                 smile: "Images/Celeste_smile.png",
-                school: "Images/1.png"
+                school: "Images/Celeste_school_neutral.png",
+                school_smile: "Images/Celeste_school_smile2.png",
+                cafe_smile: "Images/Celeste_cafe_smile.png",
+                cafe_smile2: "Images/Celeste_cafe_smile2.png",
+                cafe_happy: "Images/Celeste_cafe_happy.png"
             }
         },
         celeste_mum: {
@@ -85,7 +89,8 @@ var Novel;
             name: "Lucia",
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                neutral: "Images/10.png"
+                neutral: "Images/lucia_neutral.png",
+                smile: "Images/lucia_smile.png"
             }
         },
         sophie: {
@@ -94,7 +99,10 @@ var Novel;
         evan: {
             name: "Evan",
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {}
+            pose: {
+                smile: "Images/Evan_smile.png",
+                smile2: "Images/Evan_smile2.png"
+            }
         },
         customer: {
             name: "Kunde"
@@ -232,12 +240,12 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes = [
-            { scene: Novel.scene_1, name: "Conversation in the living room" },
+            // { scene: scene_1, name: "Conversation in the living room" },
             { scene: Novel.scene_2, name: "School" },
             { scene: Novel.scene_3, name: "Narrator" },
-            { scene: Novel.scene_4, name: "Talk with Evan" },
-            { scene: Novel.scene_5, name: "Mixing Drinks" }
-            // { scene: scene_6, name: "Good Ending" },
+            { scene: Novel.scene_4, name: "Talk with Evan" }
+            // { scene: scene_5, name: "Mixing Drinks" }
+            // { scene: scene_6, name: "Good Ending" }
             // { scene: scene_7, name: "Normal Ending" },
             // { scene: scene_8, name: "Bad Ending" }
         ];
@@ -376,13 +384,15 @@ var Novel;
             }
         };
         // let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
+        Novel.dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         Novel.ƒS.Speech.hide();
-        Novel.ƒS.Sound.fade(Novel.music.main_theme, 0.3, 1, true);
+        // ƒS.Sound.fade(music.main_theme, 0.3, 1, true);
         await Novel.ƒS.Location.show(Novel.locations.classroom);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
         await signalDelay2();
-        await Novel.ƒS.Character.show(Novel.characters.lucia, Novel.characters.lucia.pose.neutral, Novel.ƒS.positionPercent(25, 100));
+        await Novel.ƒS.Character.show(Novel.characters.lucia, Novel.characters.lucia.pose.smile, Novel.ƒS.positionPercent(25, 100));
         await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.sophie, text.sophie.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX01);
@@ -408,10 +418,15 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX09);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX10);
+        await Novel.ƒS.Character.hide(Novel.characters.celeste);
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.school_smile, Novel.ƒS.positionPercent(70, 100));
+        await Novel.ƒS.update(0.3);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX11);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX11);
         await signalDelay2();
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
+        await Novel.ƒS.Character.hide(Novel.characters.lucia);
+        await Novel.ƒS.update(1);
     }
     Novel.scene_2 = scene_2;
 })(Novel || (Novel = {}));
@@ -419,6 +434,8 @@ var Novel;
 (function (Novel) {
     async function scene_3() {
         console.log("Scene 3");
+        Novel.dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.blackScreen);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
@@ -461,20 +478,26 @@ var Novel;
                 TX13: "Das höre ich doch gerne."
             }
         };
+        Novel.dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
         let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         Novel.ƒS.Speech.hide();
-        Novel.ƒS.Sound.play(Novel.music.cafe_theme, 0.3, true);
+        //ƒS.Sound.play(music.cafe_theme, 0.3, true);
         await Novel.ƒS.Location.show(Novel.locations.cafe);
         await Novel.ƒS.update(Novel.transition.boxes.duration, Novel.transition.boxes.alpha, Novel.transition.boxes.edge);
         await signalDelay2();
         await Novel.ƒS.update();
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_smile, Novel.ƒS.positionPercent(25, 100));
+        await Novel.ƒS.update(3);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX06);
+        await Novel.ƒS.Character.show(Novel.characters.evan, Novel.characters.evan.pose.smile, Novel.ƒS.positionPercent(70, 105));
+        await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX03);
@@ -490,11 +513,14 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX12);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX08);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX09);
+        await Novel.ƒS.Character.hide(Novel.characters.celeste);
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_smile2, Novel.ƒS.positionPercent(25, 100));
+        await Novel.ƒS.update(0.3);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX11);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX13);
         await signalDelay1();
-        await Novel.ƒS.Text.print("Oben im Menü siehst jetzt zwei neue Bereiche, die Getränke- und Zutatenliste.<p>Auf die beiden Listen kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst</p>");
+        await Novel.ƒS.Text.print("Oben im Menü siehs du den Bereich <i>Getränkeliste</i>.<p>Auf die Liste kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst</p>");
         Novel.ƒS.Text.close();
     }
     Novel.scene_4 = scene_4;
@@ -626,9 +652,18 @@ var Novel;
                 TX05: "Ich bin richtig stolz auf dich."
             }
         };
+        Novel.dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
+        let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.office);
+        await Novel.ƒS.update(Novel.transition.boxes.duration, Novel.transition.boxes.alpha, Novel.transition.boxes.edge);
+        await signalDelay2();
         await Novel.ƒS.update();
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_smile, Novel.ƒS.positionPercent(25, 100));
+        await Novel.ƒS.update(2);
+        await Novel.ƒS.Character.show(Novel.characters.evan, Novel.characters.evan.pose.smile2, Novel.ƒS.positionPercent(70, 105));
+        await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
@@ -636,13 +671,24 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX04);
+        await Novel.ƒS.Character.hide(Novel.characters.celeste);
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_happy, Novel.ƒS.positionPercent(25, 100));
+        await Novel.ƒS.update(0.3);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX05);
+        await Novel.ƒS.Character.hide(Novel.characters.evan);
+        await Novel.ƒS.Character.hide(Novel.characters.celeste);
+        await Novel.ƒS.update(1);
+        // next scene
+        await signalDelay2();
+        await Novel.ƒS.update();
         await Novel.ƒS.Location.show(Novel.locations.living_room);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
         await Novel.ƒS.update();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX06);
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_happy, Novel.ƒS.positionPercent(25, 100));
+        await Novel.ƒS.update(1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX07);

@@ -36,14 +36,16 @@ namespace Novel {
         };
 
         // let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
+        dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
-        ƒS.Sound.fade(music.main_theme, 0.3, 1, true);
+       // ƒS.Sound.fade(music.main_theme, 0.3, 1, true);
         await ƒS.Location.show(locations.classroom);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
         await signalDelay2();
-        await ƒS.Character.show(characters.lucia, characters.lucia.pose.neutral, ƒS.positionPercent(25, 100));
+        await ƒS.Character.show(characters.lucia, characters.lucia.pose.smile, ƒS.positionPercent(25, 100));
         await ƒS.update(2);
         await ƒS.Speech.tell(characters.sophie, text.sophie.TX01);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX01);
@@ -69,10 +71,15 @@ namespace Novel {
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX10);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX09);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX10);
+        await ƒS.Character.hide(characters.celeste);
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.school_smile, ƒS.positionPercent(70, 100));
+        await ƒS.update(0.3);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX11);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX11);
 
         await signalDelay2();
         await ƒS.Character.hide(characters.celeste);
+        await ƒS.Character.hide(characters.lucia);
+        await ƒS.update(1);
     }
 }

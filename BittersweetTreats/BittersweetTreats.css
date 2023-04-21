@@ -63,7 +63,7 @@ dialog[type="splash"] > p {
 speech {
   position: absolute;
   bottom: 30px;
-  left: 170px;
+  left: 135px;
   /* color: beige; */
   border: 1px solid transparent;
   border-radius: 10px;

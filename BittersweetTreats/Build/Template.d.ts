@@ -69,6 +69,10 @@ declare namespace Novel {
                 neutral: string;
                 smile: string;
                 school: string;
+                school_smile: string;
+                cafe_smile: string;
+                cafe_smile2: string;
+                cafe_happy: string;
             };
         };
         celeste_mum: {
@@ -83,6 +87,7 @@ declare namespace Novel {
             origin: ƒ.ORIGIN2D;
             pose: {
                 neutral: string;
+                smile: string;
             };
         };
         sophie: {
@@ -91,7 +96,10 @@ declare namespace Novel {
         evan: {
             name: string;
             origin: ƒ.ORIGIN2D;
-            pose: {};
+            pose: {
+                smile: string;
+                smile2: string;
+            };
         };
         customer: {
             name: string;
