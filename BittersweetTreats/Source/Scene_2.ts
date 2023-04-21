@@ -80,6 +80,7 @@ namespace Novel {
         await signalDelay2();
         await ƒS.Character.hide(characters.celeste);
         await ƒS.Character.hide(characters.lucia);
+        ƒS.Speech.hide();
         await ƒS.update(1);
     }
 }

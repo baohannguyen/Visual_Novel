@@ -55,7 +55,7 @@ namespace Novel {
         await ƒS.Location.show(locations.cafe);
         await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
         await signalDelay2();
-        await ƒS.update();
+        await ƒS.update(1);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral, ƒS.positionPercent(50, 100));
         await ƒS.update(2);
         await ƒS.Speech.tell(characters.customer, text.customer.TX01);

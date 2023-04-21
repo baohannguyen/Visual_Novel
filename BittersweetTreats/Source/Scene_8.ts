@@ -23,9 +23,21 @@ namespace Novel {
             }
         };
 
+        dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
+
+        let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
+        let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
+
+
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.office);
-        await ƒS.update();
+        await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
+        await signalDelay2();
+        await ƒS.update(1);
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_sad, ƒS.positionPercent(25, 100));
+        await ƒS.Character.show(characters.evan, characters.evan.pose.disappointed, ƒS.positionPercent(70, 105));
+        await ƒS.update(2);
         await ƒS.Speech.tell(characters.evan, text.evan.TX01);
         await ƒS.Speech.tell(characters.evan, text.evan.TX02);
         await ƒS.Speech.tell(characters.evan, text.evan.TX03);
@@ -35,9 +47,18 @@ namespace Novel {
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX03);
         await ƒS.Speech.tell(characters.evan, text.evan.TX05);
         await ƒS.Speech.tell(characters.evan, text.evan.TX06);
+        await ƒS.Character.hide(characters.evan);
+        await ƒS.Character.hide(characters.celeste);
+        ƒS.Speech.hide();
+        await ƒS.update(1);
 
+        // next location
+        await signalDelay1();
+        await ƒS.update(1);
         await ƒS.Location.show(locations.park);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_sad, ƒS.positionPercent(50, 100));
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);

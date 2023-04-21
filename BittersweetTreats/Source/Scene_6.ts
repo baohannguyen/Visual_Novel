@@ -32,13 +32,14 @@ namespace Novel {
         dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
 
+        let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.office);
         await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
         await signalDelay2();
-        await ƒS.update();
+        await ƒS.update(1);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile, ƒS.positionPercent(25, 100));
         await ƒS.update(2);
         await ƒS.Character.show(characters.evan, characters.evan.pose.smile2, ƒS.positionPercent(70, 105));
@@ -58,21 +59,28 @@ namespace Novel {
         await ƒS.Speech.tell(characters.evan, text.evan.TX05);
         await ƒS.Character.hide(characters.evan);
         await ƒS.Character.hide(characters.celeste);
+        ƒS.Speech.hide();
         await ƒS.update(1);
         
-        // next scene
-        await signalDelay2();
+        // next location
+        await signalDelay1();
         await ƒS.update();
         await ƒS.Location.show(locations.living_room);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
+        ƒS.Sound.play(sounds.door_opening, 1);
         await ƒS.update();
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_happy, ƒS.positionPercent(25, 100));
+        await ƒS.update(1);
+        await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.shocked, ƒS.positionPercent(70, 100));
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX01);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX02);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX03);
+        await ƒS.Character.hide(characters.celeste_mum);
+        await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.happy, ƒS.positionPercent(70, 100));
+        await ƒS.update(0.3);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX04);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX05);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);

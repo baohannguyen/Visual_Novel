@@ -42,8 +42,7 @@ namespace Novel {
 
         //ƒS.Speech.setTickerDelays(40, 500);
         let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
-        let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
-        // let signalDelay3: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(3)]); //verzögert die Zeit zwischen den Texten
+        let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]); //verzögert die Zeit zwischen den Texten
 
         // ƒS.Sound.fade(music.main_theme, 0.5, 5, true);
         // ƒS.Sound.play(music.main_theme, 0.5, true);
@@ -60,7 +59,7 @@ namespace Novel {
         await signalDelay1();
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
-        //await ƒS.Character.animate(characters.celeste_mum, characters.celeste_mum.pose.sad, examAnimation());
+        // await ƒS.Character.animate(characters.celeste_mum, characters.celeste_mum.pose.sad, examAnimation());
         await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.sad, ƒS.positionPercent(70, 100));
         await ƒS.update(2);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX02);
@@ -73,10 +72,10 @@ namespace Novel {
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX05);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX06);
-        await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
-        await ƒS.Character.show(characters.celeste, characters.celeste.pose.smile, ƒS.positionPercent(30, 100));
         await ƒS.Character.hide(characters.celeste);
-        await ƒS.update();
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.smile, ƒS.positionPercent(30, 100));
+        await ƒS.update(0.3);
+        await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX07);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX08);
@@ -88,9 +87,15 @@ namespace Novel {
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX10);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX11);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX13);
+        await ƒS.Character.hide(characters.celeste_mum);
+        await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.smile, ƒS.positionPercent(70, 100));
+        await ƒS.update(0.3);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX12);
 
+        await signalDelay2();
         await ƒS.Character.hide(characters.celeste);
         await ƒS.Character.hide(characters.celeste_mum);
+        ƒS.Speech.hide();
+        await ƒS.update(1);
     }
 }

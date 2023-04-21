@@ -70,9 +70,11 @@ declare namespace Novel {
                 smile: string;
                 school: string;
                 school_smile: string;
+                cafe_neutral: string;
                 cafe_smile: string;
                 cafe_smile2: string;
                 cafe_happy: string;
+                cafe_sad: string;
             };
         };
         celeste_mum: {
@@ -80,6 +82,9 @@ declare namespace Novel {
             origin: ƒ.ORIGIN2D;
             pose: {
                 sad: string;
+                shocked: string;
+                happy: string;
+                smile: string;
             };
         };
         lucia: {
@@ -97,8 +102,10 @@ declare namespace Novel {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
+                neutral: string;
                 smile: string;
                 smile2: string;
+                disappointed: string;
             };
         };
         customer: {
@@ -115,7 +122,6 @@ declare namespace Novel {
     function decreaseSound(): void;
     function seeCredits(): void;
     function seeDrinkList(): void;
-    function seeIngredientList(): void;
 }
 declare namespace Novel {
     function scene_1(): ƒS.SceneReturn;

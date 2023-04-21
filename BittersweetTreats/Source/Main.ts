@@ -83,9 +83,11 @@ namespace Novel {
                 smile: "Images/Celeste_smile.png",
                 school: "Images/Celeste_school_neutral.png",
                 school_smile: "Images/Celeste_school_smile2.png",
+                cafe_neutral: "Images/Celeste_cafe_neutral.png",
                 cafe_smile: "Images/Celeste_cafe_smile.png",
                 cafe_smile2: "Images/Celeste_cafe_smile2.png",
-                cafe_happy: "Images/Celeste_cafe_happy.png"
+                cafe_happy: "Images/Celeste_cafe_happy.png",
+                cafe_sad: "Images/Celeste_cafe_sad.png"
 
             }
 
@@ -94,7 +96,10 @@ namespace Novel {
             name: "Mutter",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                sad: "Images/Celeste_normal2.png"
+                sad: "Images/Celeste_mum_sad.png",
+                shocked: "Images/Celeste_mum_shocked.png",
+                happy: "Images/Celeste_mum_happy.png",
+                smile: "Images/Celeste_mum_smile.png"
 
             }
 
@@ -117,8 +122,10 @@ namespace Novel {
             name: "Evan",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
+                neutral: "Images/Evan_neutral.png",
                 smile: "Images/Evan_smile.png",
-                smile2: "Images/Evan_smile2.png"
+                smile2: "Images/Evan_smile2.png",
+                disappointed: "Images/Evan_disappointed.png"
 
             }
 
@@ -167,7 +174,7 @@ namespace Novel {
         volumeUp: "+",
         volumeDown: "-",
         drinkList: "Getränkeliste",
-        ingredientList: "Zutatenliste"
+        // ingredientList: "Zutatenliste"
     };
 
     let gameMenu: ƒS.Menu;
@@ -207,16 +214,16 @@ namespace Novel {
         );
     }
 
-    export function seeIngredientList(): void {
-        ƒS.Text.print("Kakaopulver" +
-        "<p>Kaffeepulver</p>" +
-        "<p>Matchapulver</p>" +
-        "<p>Milch</p>" +
-        "<p>Schlagsahne</p>" +
-        "<p>Zucker</p>"
+    // export function seeIngredientList(): void {
+    //     ƒS.Text.print("Kakaopulver" +
+    //     "<p>Kaffeepulver</p>" +
+    //     "<p>Matchapulver</p>" +
+    //     "<p>Milch</p>" +
+    //     "<p>Schlagsahne</p>" +
+    //     "<p>Zucker</p>"
         
-        );
-    }
+    //     );
+    // }
 
 
 
@@ -242,9 +249,9 @@ namespace Novel {
             case menuButtons.drinkList:
                 seeDrinkList();
                 break;
-            case menuButtons.ingredientList:
-                seeIngredientList();
-                break;
+            // case menuButtons.ingredientList:
+            //     seeIngredientList();
+            //     break;
 
             // case menuButtons.close:
             //     gameMenu.close();
@@ -291,13 +298,13 @@ namespace Novel {
         gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
-            // { scene: scene_1, name: "Conversation in the living room" },
+            { scene: scene_1, name: "Conversation in the living room" },
             { scene: scene_2, name: "School" },
             { scene: scene_3, name: "Narrator" },
             { scene: scene_4, name: "Talk with Evan" }
             // { scene: scene_5, name: "Mixing Drinks" }
             // { scene: scene_6, name: "Good Ending" }
-            // { scene: scene_7, name: "Normal Ending" },
+            // { scene: scene_7, name: "Normal Ending" }
             // { scene: scene_8, name: "Bad Ending" }
         ];
 
