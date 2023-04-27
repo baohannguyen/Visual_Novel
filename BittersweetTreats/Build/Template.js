@@ -40,7 +40,7 @@ var Novel;
         },
         cafe: {
             name: "Café",
-            background: "Background/cafe.jpg"
+            background: "Background/restaurant.png"
         },
         living_room: {
             name: "Living Room",
@@ -56,7 +56,7 @@ var Novel;
         },
         office: {
             name: "Office",
-            background: "Background/office.png"
+            background: "Background/Office_BG (40).png"
         },
         blackScreen: {
             name: "Narrator Talk",
@@ -247,12 +247,12 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes = [
-            { scene: Novel.scene_1, name: "Conversation in the living room" },
-            { scene: Novel.scene_2, name: "School" },
-            { scene: Novel.scene_3, name: "Narrator" },
-            { scene: Novel.scene_4, name: "Talk with Evan" }
+            // { scene: scene_1, name: "Conversation in the living room" },
+            // { scene: scene_2, name: "School" },
+            // { scene: scene_3, name: "Narrator" },
+            // { scene: scene_4, name: "Talk with Evan" }
             // { scene: scene_5, name: "Mixing Drinks" }
-            // { scene: scene_6, name: "Good Ending" }
+            { scene: Novel.scene_6, name: "Good Ending" }
             // { scene: scene_7, name: "Normal Ending" }
             // { scene: scene_8, name: "Bad Ending" }
         ];
