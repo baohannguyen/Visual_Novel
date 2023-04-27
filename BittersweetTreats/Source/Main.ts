@@ -61,7 +61,7 @@ namespace Novel {
         },
         office: {
             name: "Office",
-            background: "Background/Office_BG (40).png"
+            background: "Background/office3.png"
         },
         blackScreen: {
             name: "Narrator Talk",
