@@ -25,12 +25,13 @@ namespace Novel {
                 TX04: "Vor allem seit ich sie vor einem Monat gebrochen habe.",
                 TX05: "Darüber habe ich mir auch schon Gedanken gemacht.",
                 TX06: "Aber das wird finanziell schwierig für uns, wenn ich weniger arbeiten werde, weil sich mein Gehalt dadurch kürzen wird.",
-                TX07: "Bist du dir sicher?",
-                TX08: "Ich weiß, dass du neben der Schule noch zum Volleyball-Training gehst und auf Grace aufpasst, wann ich immer zur Arbeit gehe.",
-                TX09: "Du sollst auch noch Zeit für dich und deine Freunde haben.",
-                TX10: "Hmm da hast du recht, dann werde ich nächste Woche der Arbeit Bescheid geben.",
-                TX11: "Aber falls es für dich zu viel wird, dann gib mir da Bescheid. Ok?",
-                TX12: "Danke mein Schatz."
+                TX07: "Nein macht das nicht Celeste.",
+                TX08: "Das wäre doch zu viel für dich",
+                TX09: "Ich weiß, dass du neben der Schule noch zum Volleyball-Training gehst und auf Grace aufpasst, wann ich immer zur Arbeit gehe.",
+                TX10: "Du sollst auch noch Zeit für dich und deine Freunde haben.",
+                TX11: "Hmm da hast du recht, dann werde ich nächste Woche der Arbeit Bescheid geben.",
+                TX12: "Aber falls es für dich zu viel wird, dann gib mir da Bescheid. Ok?",
+                TX13: "Danke mein Schatz."
 
             }
         };
@@ -80,17 +81,18 @@ namespace Novel {
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX07);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX08);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX09);
+        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX10);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX09);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX10);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX11);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX12);
-        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX10);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX11);
+        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX12);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX13);
+        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX13);
         await ƒS.Character.hide(characters.celeste_mum);
         await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.smile, ƒS.positionPercent(70, 100));
         await ƒS.update(0.3);
-        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX12);
 
         await signalDelay2();
         await ƒS.Character.hide(characters.celeste);
