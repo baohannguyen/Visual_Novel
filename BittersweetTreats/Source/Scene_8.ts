@@ -9,7 +9,7 @@ namespace Novel {
                 TX03: "Dann werde ich mich auf die Suche nach anderen Stellen begeben.",
                 TX04: "Der Job wäre super gewesen, hätte ich ihn bekommen.",
                 TX05: "Jetzt muss ich mich wieder auf der Suche nach neuen Stellenangeboten begeben.",
-                TX06: "Ich weiß nicht, ob ich das Mama erzählen soll, sie würde sich nur noch mehr Sorgen machen",
+                TX06: "Ich weiß nicht, ob ich das Mama erzählen soll, sie würde sich nur noch mehr Sorgen machen.",
                 TX07: "Und Lucia hätte sich auch gefreut, wenn ich den Job bekommen hätte, den sie mir vorgeschlagen hat.",
                 TX08: "Wie konnte ich das nur vermasseln?"
             },
@@ -38,10 +38,14 @@ namespace Novel {
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_sad, ƒS.positionPercent(25, 100));
         await ƒS.Character.show(characters.evan, characters.evan.pose.disappointed, ƒS.positionPercent(70, 105));
         await ƒS.update(2);
+        await signalDelay2();
+        ƒS.Sound.play(sounds.sigh_male, 1);
         await ƒS.Speech.tell(characters.evan, text.evan.TX01);
         await ƒS.Speech.tell(characters.evan, text.evan.TX02);
         await ƒS.Speech.tell(characters.evan, text.evan.TX03);
         await ƒS.Speech.tell(characters.evan, text.evan.TX04);
+        await signalDelay1();
+        ƒS.Sound.play(sounds.oh, 1);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX02);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX03);
@@ -53,8 +57,9 @@ namespace Novel {
         await ƒS.update(1);
 
         // next location
+        ƒS.Sound.play(sounds.rain, 0.3, false);
         await signalDelay1();
-        await ƒS.update(1);
+        await ƒS.update(2);
         await ƒS.Location.show(locations.street);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_sad, ƒS.positionPercent(50, 100));

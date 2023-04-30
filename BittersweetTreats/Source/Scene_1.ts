@@ -26,7 +26,7 @@ namespace Novel {
                 TX05: "Darüber habe ich mir auch schon Gedanken gemacht.",
                 TX06: "Aber das wird finanziell schwierig für uns, wenn ich weniger arbeiten werde, weil sich mein Gehalt dadurch kürzen wird.",
                 TX07: "Nein macht das nicht Celeste.",
-                TX08: "Das wäre doch zu viel für dich",
+                TX08: "Das wäre doch zu viel für dich.",
                 TX09: "Ich weiß, dass du neben der Schule noch zum Volleyball-Training gehst und auf Grace aufpasst, wann ich immer zur Arbeit gehe.",
                 TX10: "Du sollst auch noch Zeit für dich und deine Freunde haben.",
                 TX11: "Hmm da hast du recht, dann werde ich nächste Woche der Arbeit Bescheid geben.",
@@ -45,8 +45,8 @@ namespace Novel {
         let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]); //verzögert die Zeit zwischen den Texten
 
-        // ƒS.Sound.fade(music.main_theme, 0.5, 5, true);
-        // ƒS.Sound.play(music.main_theme, 0.5, true);
+        // ƒS.Sound.fade(music.main_theme, 0.3, 1, false);
+        // ƒS.Sound.play(music.main_theme, 0.3, false);
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.living_room);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
@@ -89,10 +89,10 @@ namespace Novel {
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX11);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX12);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX13);
-        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX13);
         await ƒS.Character.hide(characters.celeste_mum);
         await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.smile, ƒS.positionPercent(70, 100));
         await ƒS.update(0.3);
+        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX13);
 
         await signalDelay2();
         await ƒS.Character.hide(characters.celeste);

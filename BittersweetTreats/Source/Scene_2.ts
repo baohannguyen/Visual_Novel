@@ -41,7 +41,7 @@ namespace Novel {
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
-       // ƒS.Sound.fade(music.main_theme, 0.3, 1, true);
+        // ƒS.Sound.play(sounds.talking_school, 0.3, false);
         await ƒS.Location.show(locations.classroom);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
         await signalDelay2();
@@ -75,6 +75,7 @@ namespace Novel {
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.school_smile, ƒS.positionPercent(70, 100));
         await ƒS.update(0.3);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX11);
+        ƒS.Sound.play(sounds.chuckle_female, 0.3, false);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX11);
 
         await signalDelay2();

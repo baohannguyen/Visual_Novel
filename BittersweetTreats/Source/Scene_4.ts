@@ -43,6 +43,7 @@ namespace Novel {
         //ƒS.Sound.play(music.cafe_theme, 0.3, true);
         await ƒS.Location.show(locations.cafe);
         await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
+        ƒS.Sound.play(sounds.cafe_door, 1);
         await signalDelay2();
         await ƒS.update(1);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile, ƒS.positionPercent(25, 100));
@@ -68,6 +69,7 @@ namespace Novel {
         await ƒS.Speech.tell(characters.evan, text.evan.TX10);
         await ƒS.Speech.tell(characters.evan, text.evan.TX11);
         await ƒS.Speech.tell(characters.evan, text.evan.TX12);
+        ƒS.Sound.play(sounds.hmm, 1);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX09);
         await ƒS.Character.hide(characters.celeste);

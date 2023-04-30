@@ -29,9 +29,11 @@ namespace Novel {
         rain: "Audio/Sound/rain.mp3",
         sigh_male: "Audio/Sound/sigh_male.mp3",
         sigh_female: "Audio/Sound/sigh_female.mp3",
-        spoon_stir: "Audio/Sound/spoon_stir_audio.mp3"
+        spoon_stir: "Audio/Sound/spoon_stir_audio.mp3",
+        talking_school: "Audio/Sound/talking_school.mp3",
+        chatter_school: "Audio/Sound/chatter_school.mp3"
     };
-
+    
     export let music = {
         main_theme: "Audio/Themes/Spring-Flowers.mp3",
         cafe_theme: "Audio/Themes/romantic.mp3"
@@ -299,11 +301,11 @@ namespace Novel {
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
             // { scene: scene_1, name: "Conversation in the living room" },
-            // { scene: scene_2, name: "School" },
+            // { scene: scene_2, name: "School" }
             // { scene: scene_3, name: "Narrator" },
-            // { scene: scene_4, name: "Talk with Evan" }
+            { scene: scene_4, name: "Talk with Evan" }
             // { scene: scene_5, name: "Mixing Drinks" }
-            { scene: scene_6, name: "Good Ending" }
+            // { scene: scene_6, name: "Good Ending" }
             // { scene: scene_7, name: "Normal Ending" }
             // { scene: scene_8, name: "Bad Ending" }
         ];

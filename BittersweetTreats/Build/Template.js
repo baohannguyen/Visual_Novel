@@ -27,7 +27,9 @@ var Novel;
         rain: "Audio/Sound/rain.mp3",
         sigh_male: "Audio/Sound/sigh_male.mp3",
         sigh_female: "Audio/Sound/sigh_female.mp3",
-        spoon_stir: "Audio/Sound/spoon_stir_audio.mp3"
+        spoon_stir: "Audio/Sound/spoon_stir_audio.mp3",
+        talking_school: "Audio/Sound/talking_school.mp3",
+        chatter_school: "Audio/Sound/chatter_school.mp3"
     };
     Novel.music = {
         main_theme: "Audio/Themes/Spring-Flowers.mp3",
@@ -56,7 +58,7 @@ var Novel;
         },
         office: {
             name: "Office",
-            background: "Background/Office_BG (40).png"
+            background: "Background/office3.png"
         },
         blackScreen: {
             name: "Narrator Talk",
@@ -248,11 +250,11 @@ var Novel;
         buttonFunctions("Close");
         let scenes = [
             // { scene: scene_1, name: "Conversation in the living room" },
-            // { scene: scene_2, name: "School" },
+            // { scene: scene_2, name: "School" }
             // { scene: scene_3, name: "Narrator" },
-            // { scene: scene_4, name: "Talk with Evan" }
+            { scene: Novel.scene_4, name: "Talk with Evan" }
             // { scene: scene_5, name: "Mixing Drinks" }
-            { scene: Novel.scene_6, name: "Good Ending" }
+            // { scene: scene_6, name: "Good Ending" }
             // { scene: scene_7, name: "Normal Ending" }
             // { scene: scene_8, name: "Bad Ending" }
         ];
@@ -289,12 +291,13 @@ var Novel;
                 TX04: "Vor allem seit ich sie vor einem Monat gebrochen habe.",
                 TX05: "Darüber habe ich mir auch schon Gedanken gemacht.",
                 TX06: "Aber das wird finanziell schwierig für uns, wenn ich weniger arbeiten werde, weil sich mein Gehalt dadurch kürzen wird.",
-                TX07: "Bist du dir sicher?",
-                TX08: "Ich weiß, dass du neben der Schule noch zum Volleyball-Training gehst und auf Grace aufpasst, wann ich immer zur Arbeit gehe.",
-                TX09: "Du sollst auch noch Zeit für dich und deine Freunde haben.",
-                TX10: "Hmm da hast du recht, dann werde ich nächste Woche der Arbeit Bescheid geben.",
-                TX11: "Aber falls es für dich zu viel wird, dann gib mir da Bescheid. Ok?",
-                TX12: "Danke mein Schatz."
+                TX07: "Nein macht das nicht Celeste.",
+                TX08: "Das wäre doch zu viel für dich.",
+                TX09: "Ich weiß, dass du neben der Schule noch zum Volleyball-Training gehst und auf Grace aufpasst, wann ich immer zur Arbeit gehe.",
+                TX10: "Du sollst auch noch Zeit für dich und deine Freunde haben.",
+                TX11: "Hmm da hast du recht, dann werde ich nächste Woche der Arbeit Bescheid geben.",
+                TX12: "Aber falls es für dich zu viel wird, dann gib mir da Bescheid. Ok?",
+                TX13: "Danke mein Schatz."
             }
         };
         // Code um die Bar auszublenden (die ersten zwei Codes muss man ausblenden)
@@ -304,8 +307,8 @@ var Novel;
         //ƒS.Speech.setTickerDelays(40, 500);
         let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(1)]);
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]); //verzögert die Zeit zwischen den Texten
-        // ƒS.Sound.fade(music.main_theme, 0.5, 5, true);
-        // ƒS.Sound.play(music.main_theme, 0.5, true);
+        // ƒS.Sound.fade(music.main_theme, 0.3, 1, false);
+        // ƒS.Sound.play(music.main_theme, 0.3, false);
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.living_room);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
@@ -340,17 +343,18 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX07);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX08);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX09);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX09);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX11);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX12);
-        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX11);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX12);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX13);
         await Novel.ƒS.Character.hide(Novel.characters.celeste_mum);
         await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.smile, Novel.ƒS.positionPercent(70, 100));
         await Novel.ƒS.update(0.3);
-        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX12);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX13);
         await signalDelay2();
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
         await Novel.ƒS.Character.hide(Novel.characters.celeste_mum);
@@ -400,7 +404,7 @@ var Novel;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         Novel.ƒS.Speech.hide();
-        // ƒS.Sound.fade(music.main_theme, 0.3, 1, true);
+        // ƒS.Sound.play(sounds.talking_school, 0.3, false);
         await Novel.ƒS.Location.show(Novel.locations.classroom);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
         await signalDelay2();
@@ -434,6 +438,7 @@ var Novel;
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.school_smile, Novel.ƒS.positionPercent(70, 100));
         await Novel.ƒS.update(0.3);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX11);
+        Novel.ƒS.Sound.play(Novel.sounds.chuckle_female, 0.3, false);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX11);
         await signalDelay2();
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
@@ -499,6 +504,7 @@ var Novel;
         //ƒS.Sound.play(music.cafe_theme, 0.3, true);
         await Novel.ƒS.Location.show(Novel.locations.cafe);
         await Novel.ƒS.update(Novel.transition.boxes.duration, Novel.transition.boxes.alpha, Novel.transition.boxes.edge);
+        Novel.ƒS.Sound.play(Novel.sounds.cafe_door, 1);
         await signalDelay2();
         await Novel.ƒS.update(1);
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_smile, Novel.ƒS.positionPercent(25, 100));
@@ -524,6 +530,7 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX11);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX12);
+        Novel.ƒS.Sound.play(Novel.sounds.hmm, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX08);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX09);
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
@@ -782,7 +789,7 @@ var Novel;
                 TX03: "Dann werde ich mich auf die Suche nach anderen Stellen begeben.",
                 TX04: "Der Job wäre super gewesen, hätte ich ihn bekommen.",
                 TX05: "Jetzt muss ich mich wieder auf der Suche nach neuen Stellenangeboten begeben.",
-                TX06: "Ich weiß nicht, ob ich das Mama erzählen soll, sie würde sich nur noch mehr Sorgen machen",
+                TX06: "Ich weiß nicht, ob ich das Mama erzählen soll, sie würde sich nur noch mehr Sorgen machen.",
                 TX07: "Und Lucia hätte sich auch gefreut, wenn ich den Job bekommen hätte, den sie mir vorgeschlagen hat.",
                 TX08: "Wie konnte ich das nur vermasseln?"
             },
@@ -807,10 +814,14 @@ var Novel;
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_sad, Novel.ƒS.positionPercent(25, 100));
         await Novel.ƒS.Character.show(Novel.characters.evan, Novel.characters.evan.pose.disappointed, Novel.ƒS.positionPercent(70, 105));
         await Novel.ƒS.update(2);
+        await signalDelay2();
+        Novel.ƒS.Sound.play(Novel.sounds.sigh_male, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX04);
+        await signalDelay1();
+        Novel.ƒS.Sound.play(Novel.sounds.oh, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
@@ -821,9 +832,10 @@ var Novel;
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.update(1);
         // next location
+        Novel.ƒS.Sound.play(Novel.sounds.rain, 0.3, false);
         await signalDelay1();
-        await Novel.ƒS.update(1);
-        await Novel.ƒS.Location.show(Novel.locations.park);
+        await Novel.ƒS.update(2);
+        await Novel.ƒS.Location.show(Novel.locations.street);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_sad, Novel.ƒS.positionPercent(50, 100));
         await Novel.ƒS.update(1);
