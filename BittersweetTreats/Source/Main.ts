@@ -266,11 +266,11 @@ namespace Novel {
     document.addEventListener("keydown", hndKeyPress);
     async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
         switch (_event.code) {
-            case ƒ.KEYBOARD_CODE.F:
+            case ƒ.KEYBOARD_CODE.S:
                 console.log("Save");
                 await ƒS.Progress.save();
                 break;
-            case ƒ.KEYBOARD_CODE.G:
+            case ƒ.KEYBOARD_CODE.L:
                 console.log("Load");
                 await ƒS.Progress.load();
                 break;
@@ -286,6 +286,11 @@ namespace Novel {
                     menuIsOpen = true;
                 }
                 break;
+            case ƒ.KEYBOARD_CODE.C:
+                console.log("Credits");
+                seeCredits();
+                break;
+                
 
 
         }

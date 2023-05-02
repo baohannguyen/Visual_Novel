@@ -222,11 +222,11 @@ var Novel;
     document.addEventListener("keydown", hndKeyPress);
     async function hndKeyPress(_event) {
         switch (_event.code) {
-            case Novel.ƒ.KEYBOARD_CODE.F:
+            case Novel.ƒ.KEYBOARD_CODE.S:
                 console.log("Save");
                 await Novel.ƒS.Progress.save();
                 break;
-            case Novel.ƒ.KEYBOARD_CODE.G:
+            case Novel.ƒ.KEYBOARD_CODE.L:
                 console.log("Load");
                 await Novel.ƒS.Progress.load();
                 break;
@@ -241,6 +241,10 @@ var Novel;
                     gameMenu.open();
                     menuIsOpen = true;
                 }
+                break;
+            case Novel.ƒ.KEYBOARD_CODE.C:
+                console.log("Credits");
+                seeCredits();
                 break;
         }
     }
