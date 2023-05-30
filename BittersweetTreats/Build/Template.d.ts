@@ -77,6 +77,7 @@ declare namespace Novel {
                 cafe_smile2: string;
                 cafe_happy: string;
                 cafe_sad: string;
+                cafe_oh: string;
             };
         };
         celeste_mum: {

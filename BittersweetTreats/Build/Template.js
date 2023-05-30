@@ -79,7 +79,8 @@ var Novel;
                 cafe_smile: "Images/Celeste_cafe_smile.png",
                 cafe_smile2: "Images/Celeste_cafe_smile2.png",
                 cafe_happy: "Images/Celeste_cafe_happy.png",
-                cafe_sad: "Images/Celeste_cafe_sad.png"
+                cafe_sad: "Images/Celeste_cafe_sad.png",
+                cafe_oh: "Images/Celeste_cafe_oh.png"
             }
         },
         celeste_mum: {
@@ -174,9 +175,8 @@ var Novel;
     }
     Novel.seeCredits = seeCredits;
     function seeDrinkList() {
-        Novel.ƒS.Text.print("Schokotraum: Kakaopulver, Milch und Schlagsahne" +
-            "<p>Schlafenszeit: Kaffeepulver, Milch und Zucker</p>" +
-            "<p>Matcha Latte: Matchapulver, Milch und Zucker</p>");
+        Novel.ƒS.Text.print("Schokotraum: Kakaopulver und Milch" +
+            "<p>Matcha Latte: Matchapulver und Milch</p>");
     }
     Novel.seeDrinkList = seeDrinkList;
     // export function seeIngredientList(): void {
@@ -256,8 +256,8 @@ var Novel;
             // { scene: scene_1, name: "Conversation in the living room" },
             // { scene: scene_2, name: "School" }
             // { scene: scene_3, name: "Narrator" },
-            { scene: Novel.scene_4, name: "Talk with Evan" }
-            // { scene: scene_5, name: "Mixing Drinks" }
+            // { scene: scene_4, name: "Talk with Evan" }
+            { scene: Novel.scene_5, name: "Mixing Drinks" }
             // { scene: scene_6, name: "Good Ending" }
             // { scene: scene_7, name: "Normal Ending" }
             // { scene: scene_8, name: "Bad Ending" }
@@ -540,6 +540,7 @@ var Novel;
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_smile2, Novel.ƒS.positionPercent(25, 100));
         await Novel.ƒS.update(0.3);
+        Novel.ƒS.Sound.play(Novel.sounds.chuckle_female, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX11);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX13);
@@ -556,22 +557,22 @@ var Novel;
         let text = {
             celeste: {
                 TX01: "Ja gerne, kommt sofort.",
-                TX02: "<i>Was war die erste Zutat für die Schlafenszeit?",
+                TX02: "<i>Was war die erste Zutat für den Schokotraum?",
                 // TX03: "Hmm, was kommt nochmal als nächstes dran?",
                 TX04: "Jetzt fehlt mir nur noch die zweite Zutat, das war glaub ich...",
                 TX05: "Hier ihr Getränk.",
                 TX06: "Vielen Dank, das freut mich.",
-                TX07: "Ja, das tut mir leid.",
-                TX08: "Ich werde beim nächsten Mal besser darauf achten",
+                TX07: "Oh, das tut mir leid.",
+                TX08: "Ich werde beim nächsten Mal besser darauf achten.",
                 TX09: "Genau, ich mische die Getränke zum ersten Mal.",
                 TX10: "Aber es tut mir ebenfalls leid, dass ich das Getränk falsch gemischt habe.",
-                TX11: "Die nächste Mischung wird richtig sein.",
+                TX11: "Die nächste Mischung wird auf jeden Fall richtig sein.",
                 TX12: "... das tut mir leid."
             },
             evan: {
                 TX01: "Gut gemacht Celeste.",
                 TX02: "Da kommt schon der nächste Kunde.",
-                TX03: "Oh, du hast ein oder zwei falsche Zutaten hinzugefügt.",
+                TX03: "Oh, du hast eine falsche Zutat hinzugefügt.",
                 TX04: "Das nächste Mal besser darauf aufpassen.",
                 TX05: "Verstanden?",
                 TX06: "Celeste, alle Zutaten, die du gemischt hast, sind komplett falsch.",
@@ -582,7 +583,7 @@ var Novel;
                 TX11: "Celeste warte bitte im Büro auf mich."
             },
             customer: {
-                TX01: "Hallo, ich hätte gerne einmal die Schlafenszeit bitte.",
+                TX01: "Hallo, ich hätte gerne einmal den Schokotraum bitte.",
                 TX01_2: "Hallo, ich hätte gerne einmal einen ... bitte.",
                 TX02: "Danke.",
                 TX03: "Das schmeckt super.",
@@ -599,12 +600,12 @@ var Novel;
         };
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         Novel.ƒS.Speech.hide();
-        Novel.ƒS.Sound.play(Novel.music.cafe_theme, 0.3, true);
+        // ƒS.Sound.play(music.cafe_theme, 0.3, true);
         await Novel.ƒS.Location.show(Novel.locations.cafe);
         await Novel.ƒS.update(Novel.transition.boxes.duration, Novel.transition.boxes.alpha, Novel.transition.boxes.edge);
         await signalDelay2();
         await Novel.ƒS.update(1);
-        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral, Novel.ƒS.positionPercent(50, 100));
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_smile, Novel.ƒS.positionPercent(50, 100));
         await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
@@ -616,14 +617,10 @@ var Novel;
         let firstChoice = await Novel.ƒS.Menu.getInput(chooseFirstIngredient, "choicesDrinks");
         switch (firstChoice) {
             case chooseFirstIngredient.ingredientOne:
-                console.log("test");
-                // dataForSave.celesteScore += 0;
-                // console.log(dataForSave.celesteScore);
-                await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
-            case chooseFirstIngredient.ingredientTwo:
-                console.log("test");
-                // dataForSave.celesteScore += 50;
-                // console.log(dataForSave.celesteScore);
+                console.log("Kakaopulver");
+                Novel.dataForSave.celesteScore += 50;
+                console.log(Novel.dataForSave.celesteScore);
+                Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
                 await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
                 let chooseSecondIngredient = {
                     ingredientOne: "Milch",
@@ -632,15 +629,95 @@ var Novel;
                 let secondChoice = await Novel.ƒS.Menu.getInput(chooseSecondIngredient, "choicesDrinks");
                 switch (secondChoice) {
                     case chooseSecondIngredient.ingredientOne:
-                        console.log("test");
-                        // dataForSave.celesteScore += 50;
-                        // console.log(dataForSave.celesteScore);
+                        console.log("Milch");
+                        Novel.dataForSave.celesteScore += 50;
+                        console.log(Novel.dataForSave.celesteScore);
                         Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
-                    case chooseSecondIngredient.ingredientOne:
-                        console.log("test");
-                        // dataForSave.celesteScore += 0;
-                        // console.log(dataForSave.celesteScore);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX02);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX03);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX06);
+                        await Novel.ƒS.Character.show(Novel.characters.evan, Novel.characters.evan.pose.smile, Novel.ƒS.positionPercent(85, 105));
+                        await Novel.ƒS.update(1);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX01);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX02);
+                        break;
+                    case chooseSecondIngredient.ingredientTwo:
+                        console.log("Zucker");
+                        Novel.dataForSave.celesteScore -= 50;
+                        console.log(Novel.dataForSave.celesteScore);
                         Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX02);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX04);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX05);
+                        await Novel.ƒS.Character.show(Novel.characters.evan, Novel.characters.evan.pose.neutral, Novel.ƒS.positionPercent(85, 105));
+                        await Novel.ƒS.update(1);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX03);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX04);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX05);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX07);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX08);
+                        break;
+                }
+            ////////////////////////////////////////////////////////
+            case chooseFirstIngredient.ingredientTwo:
+                console.log("Kaffeepulver");
+                Novel.dataForSave.celesteScore += 0;
+                console.log(Novel.dataForSave.celesteScore);
+                Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
+                await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
+                let secondOptionIngredient = {
+                    ingredientOne: "Milch",
+                    ingredientTwo: "Zucker"
+                };
+                let secondRound = await Novel.ƒS.Menu.getInput(secondOptionIngredient, "choicesDrinks");
+                switch (secondRound) {
+                    case secondOptionIngredient.ingredientOne:
+                        console.log("Milch");
+                        Novel.dataForSave.celesteScore += 50;
+                        console.log(Novel.dataForSave.celesteScore);
+                        Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX02);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX04);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX05);
+                        await Novel.ƒS.Character.show(Novel.characters.evan, Novel.characters.evan.pose.neutral, Novel.ƒS.positionPercent(85, 105));
+                        await Novel.ƒS.update(1);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX03);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX04);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX05);
+                        await Novel.ƒS.Character.hide(Novel.characters.celeste);
+                        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_oh, Novel.ƒS.positionPercent(50, 100));
+                        await Novel.ƒS.update(0.3);
+                        Novel.ƒS.Sound.play(Novel.sounds.oh, 1);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX07);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX08);
+                        break;
+                    case secondOptionIngredient.ingredientTwo:
+                        console.log("Zucker");
+                        Novel.dataForSave.celesteScore += 0;
+                        console.log(Novel.dataForSave.celesteScore);
+                        Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX02);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX06);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX07);
+                        await Novel.ƒS.Character.hide(Novel.characters.celeste);
+                        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_sad, Novel.ƒS.positionPercent(50, 100));
+                        await Novel.ƒS.update(0.3);
+                        await Novel.ƒS.Character.show(Novel.characters.evan, Novel.characters.evan.pose.neutral, Novel.ƒS.positionPercent(85, 105));
+                        await Novel.ƒS.update(1);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX06);
+                        Novel.ƒS.Sound.play(Novel.sounds.sigh_male, 1);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX07);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX08);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX08);
+                        await Novel.ƒS.Speech.tell(Novel.characters.customer, text.customer.TX09);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX09);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX10);
+                        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX11);
+                        break;
                 }
         }
     }

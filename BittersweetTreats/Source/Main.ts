@@ -89,7 +89,8 @@ namespace Novel {
                 cafe_smile: "Images/Celeste_cafe_smile.png",
                 cafe_smile2: "Images/Celeste_cafe_smile2.png",
                 cafe_happy: "Images/Celeste_cafe_happy.png",
-                cafe_sad: "Images/Celeste_cafe_sad.png"
+                cafe_sad: "Images/Celeste_cafe_sad.png",
+                cafe_oh: "Images/Celeste_cafe_oh.png"
 
             }
 
@@ -208,9 +209,8 @@ namespace Novel {
     }
 
     export function seeDrinkList(): void {
-        ƒS.Text.print("Schokotraum: Kakaopulver, Milch und Schlagsahne" + 
-        "<p>Schlafenszeit: Kaffeepulver, Milch und Zucker</p>" +
-        "<p>Matcha Latte: Matchapulver, Milch und Zucker</p>"
+        ƒS.Text.print("Schokotraum: Kakaopulver und Milch" + 
+        "<p>Matcha Latte: Matchapulver und Milch</p>"
         
         
         );
@@ -308,8 +308,8 @@ namespace Novel {
             // { scene: scene_1, name: "Conversation in the living room" },
             // { scene: scene_2, name: "School" }
             // { scene: scene_3, name: "Narrator" },
-            { scene: scene_4, name: "Talk with Evan" }
-            // { scene: scene_5, name: "Mixing Drinks" }
+            // { scene: scene_4, name: "Talk with Evan" }
+            { scene: scene_5, name: "Mixing Drinks" }
             // { scene: scene_6, name: "Good Ending" }
             // { scene: scene_7, name: "Normal Ending" }
             // { scene: scene_8, name: "Bad Ending" }

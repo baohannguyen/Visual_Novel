@@ -5,22 +5,22 @@ namespace Novel {
         let text = {
             celeste: {
                 TX01: "Ja gerne, kommt sofort.",
-                TX02: "<i>Was war die erste Zutat für die Schlafenszeit?",
+                TX02: "<i>Was war die erste Zutat für den Schokotraum?",
                 // TX03: "Hmm, was kommt nochmal als nächstes dran?",
                 TX04: "Jetzt fehlt mir nur noch die zweite Zutat, das war glaub ich...",
                 TX05: "Hier ihr Getränk.",
                 TX06: "Vielen Dank, das freut mich.",
-                TX07: "Ja, das tut mir leid.",
-                TX08: "Ich werde beim nächsten Mal besser darauf achten",
+                TX07: "Oh, das tut mir leid.",
+                TX08: "Ich werde beim nächsten Mal besser darauf achten.",
                 TX09: "Genau, ich mische die Getränke zum ersten Mal.",
                 TX10: "Aber es tut mir ebenfalls leid, dass ich das Getränk falsch gemischt habe.",
-                TX11: "Die nächste Mischung wird richtig sein.",
+                TX11: "Die nächste Mischung wird auf jeden Fall richtig sein.",
                 TX12: "... das tut mir leid."
             },
             evan: {
                 TX01: "Gut gemacht Celeste.",
                 TX02: "Da kommt schon der nächste Kunde.",
-                TX03: "Oh, du hast ein oder zwei falsche Zutaten hinzugefügt.",
+                TX03: "Oh, du hast eine falsche Zutat hinzugefügt.",
                 TX04: "Das nächste Mal besser darauf aufpassen.",
                 TX05: "Verstanden?",
                 TX06: "Celeste, alle Zutaten, die du gemischt hast, sind komplett falsch.",
@@ -31,7 +31,7 @@ namespace Novel {
                 TX11: "Celeste warte bitte im Büro auf mich."
             },
             customer: {
-                TX01: "Hallo, ich hätte gerne einmal die Schlafenszeit bitte.",
+                TX01: "Hallo, ich hätte gerne einmal den Schokotraum bitte.",
                 TX01_2: "Hallo, ich hätte gerne einmal einen ... bitte.",
                 TX02: "Danke.",
                 TX03: "Das schmeckt super.",
@@ -51,12 +51,12 @@ namespace Novel {
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
-        ƒS.Sound.play(music.cafe_theme, 0.3, true);
+        // ƒS.Sound.play(music.cafe_theme, 0.3, true);
         await ƒS.Location.show(locations.cafe);
         await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
         await signalDelay2();
         await ƒS.update(1);
-        await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral, ƒS.positionPercent(50, 100));
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile, ƒS.positionPercent(50, 100));
         await ƒS.update(2);
         await ƒS.Speech.tell(characters.customer, text.customer.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
@@ -72,15 +72,10 @@ namespace Novel {
 
         switch (firstChoice) {
             case chooseFirstIngredient.ingredientOne:
-                console.log("test");
-                // dataForSave.celesteScore += 0;
-                // console.log(dataForSave.celesteScore);
-                await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
-
-            case chooseFirstIngredient.ingredientTwo:
-                console.log("test");
-                // dataForSave.celesteScore += 50;
-                // console.log(dataForSave.celesteScore);
+                console.log("Kakaopulver");
+                dataForSave.celesteScore += 50;
+                console.log(dataForSave.celesteScore);
+                ƒS.Sound.play(sounds.spoon_stir, 1);
                 await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
 
                 let chooseSecondIngredient = {
@@ -92,33 +87,107 @@ namespace Novel {
 
                 switch (secondChoice) {
                     case chooseSecondIngredient.ingredientOne:
-                        console.log("test");
-                        // dataForSave.celesteScore += 50;
-                        // console.log(dataForSave.celesteScore);
+                        console.log("Milch");
+                        dataForSave.celesteScore += 50;
+                        console.log(dataForSave.celesteScore);
                         ƒS.Sound.play(sounds.spoon_stir, 1);
+                        await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
+                        await ƒS.Speech.tell(characters.customer, text.customer.TX02);
+                        await ƒS.Speech.tell(characters.customer, text.customer.TX03);
+                        await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
+                        await ƒS.Character.show(characters.evan, characters.evan.pose.smile, ƒS.positionPercent(85, 105));
+                        await ƒS.update(1);
+                        await ƒS.Speech.tell(characters.evan, text.evan.TX01);
+                        await ƒS.Speech.tell(characters.evan, text.evan.TX02);
+                        break;
 
-                    case chooseSecondIngredient.ingredientOne:
-                        console.log("test");
-                        // dataForSave.celesteScore += 0;
-                        // console.log(dataForSave.celesteScore);
+                    case chooseSecondIngredient.ingredientTwo:
+                        console.log("Zucker");
+                        dataForSave.celesteScore -= 50;
+                        console.log(dataForSave.celesteScore);
                         ƒS.Sound.play(sounds.spoon_stir, 1);
-
-
-
-
-
-
-
-
+                        await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
+                        await ƒS.Speech.tell(characters.customer, text.customer.TX02);
+                        await ƒS.Speech.tell(characters.customer, text.customer.TX04);
+                        await ƒS.Speech.tell(characters.customer, text.customer.TX05);
+                        await ƒS.Character.show(characters.evan, characters.evan.pose.neutral, ƒS.positionPercent(85, 105));
+                        await ƒS.update(1);
+                        await ƒS.Speech.tell(characters.evan, text.evan.TX03);
+                        await ƒS.Speech.tell(characters.evan, text.evan.TX04);
+                        await ƒS.Speech.tell(characters.evan, text.evan.TX05);
+                        await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
+                        await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
+                        break;
                 }
 
+                    ////////////////////////////////////////////////////////
+                    case chooseFirstIngredient.ingredientTwo:
+                        console.log("Kaffeepulver");
+                        dataForSave.celesteScore += 0;
+                        console.log(dataForSave.celesteScore);
+                        ƒS.Sound.play(sounds.spoon_stir, 1);
+                        await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
 
+                        let secondOptionIngredient = {
+                            ingredientOne: "Milch",
+                            ingredientTwo: "Zucker"
+                        };
 
+                        let secondRound = await ƒS.Menu.getInput(secondOptionIngredient, "choicesDrinks");
 
+                        switch (secondRound) {
+                            case secondOptionIngredient.ingredientOne:
+                                console.log("Milch");
+                                dataForSave.celesteScore += 50;
+                                console.log(dataForSave.celesteScore);
+                                ƒS.Sound.play(sounds.spoon_stir, 1);
+                                await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
+                                await ƒS.Speech.tell(characters.customer, text.customer.TX02);
+                                await ƒS.Speech.tell(characters.customer, text.customer.TX04);
+                                await ƒS.Speech.tell(characters.customer, text.customer.TX05);
+                                await ƒS.Character.show(characters.evan, characters.evan.pose.neutral, ƒS.positionPercent(85, 105));
+                                await ƒS.update(1);
+                                await ƒS.Speech.tell(characters.evan, text.evan.TX03);
+                                await ƒS.Speech.tell(characters.evan, text.evan.TX04);
+                                await ƒS.Speech.tell(characters.evan, text.evan.TX05);
+                                await ƒS.Character.hide(characters.celeste);
+                                await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_oh, ƒS.positionPercent(50, 100));
+                                await ƒS.update(0.3);
+                                ƒS.Sound.play(sounds.oh, 1);
+                                await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
+                                await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
+                                break;
 
-
+                            case secondOptionIngredient.ingredientTwo:
+                                console.log("Zucker");
+                                dataForSave.celesteScore += 0;
+                                console.log(dataForSave.celesteScore);
+                                ƒS.Sound.play(sounds.spoon_stir, 1);
+                                await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
+                                await ƒS.Speech.tell(characters.customer, text.customer.TX02);
+                                await ƒS.Speech.tell(characters.customer, text.customer.TX06);
+                                await ƒS.Speech.tell(characters.customer, text.customer.TX07);
+                                await ƒS.Character.hide(characters.celeste);
+                                await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_sad, ƒS.positionPercent(50, 100));
+                                await ƒS.update(0.3);
+                                await ƒS.Character.show(characters.evan, characters.evan.pose.neutral, ƒS.positionPercent(85, 105));
+                                await ƒS.update(1);
+                                await ƒS.Speech.tell(characters.evan, text.evan.TX06);
+                                ƒS.Sound.play(sounds.sigh_male, 1);
+                                await ƒS.Speech.tell(characters.evan, text.evan.TX07);
+                                await ƒS.Speech.tell(characters.evan, text.evan.TX08);
+                                await ƒS.Speech.tell(characters.customer, text.customer.TX08);
+                                await ƒS.Speech.tell(characters.customer, text.customer.TX09);
+                                await ƒS.Speech.tell(characters.celeste, text.celeste.TX09);
+                                await ƒS.Speech.tell(characters.celeste, text.celeste.TX10);
+                                await ƒS.Speech.tell(characters.celeste, text.celeste.TX11);
+                                break;
+                        }
 
         }
 
+
+        
     }
 }
+

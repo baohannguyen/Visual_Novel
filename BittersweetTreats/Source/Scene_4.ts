@@ -75,6 +75,7 @@ namespace Novel {
         await ƒS.Character.hide(characters.celeste);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile2, ƒS.positionPercent(25, 100));
         await ƒS.update(0.3);
+        ƒS.Sound.play(sounds.chuckle_female, 1);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX10);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX11);
         await ƒS.Speech.tell(characters.evan, text.evan.TX13);
