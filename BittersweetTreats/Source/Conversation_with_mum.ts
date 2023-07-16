@@ -45,7 +45,7 @@ namespace Novel {
         let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]); //verzögert die Zeit zwischen den Texten
 
-        // ƒS.Sound.fade(music.main_theme, 0.3, 1, false);
+        // ƒS.Sound.fade(music.main_theme, 0.3, 0.2);
         // ƒS.Sound.play(music.main_theme, 0.3, false);
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.living_room);

@@ -1,4 +1,13 @@
 declare namespace Novel {
+    function scene_8(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_1(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_6(): ƒS.SceneReturn;
+}
+declare namespace Novel {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let transition: {
@@ -127,26 +136,20 @@ declare namespace Novel {
     function seeDrinkList(): void;
 }
 declare namespace Novel {
-    function scene_1(): ƒS.SceneReturn;
+    function scene_5(): ƒS.SceneReturn;
 }
 declare namespace Novel {
-    function scene_2(): ƒS.SceneReturn;
+    function scene_5_1(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     function scene_3(): ƒS.SceneReturn;
 }
 declare namespace Novel {
-    function scene_4(): ƒS.SceneReturn;
-}
-declare namespace Novel {
-    function scene_5(): ƒS.SceneReturn;
-}
-declare namespace Novel {
-    function scene_6(): ƒS.SceneReturn;
-}
-declare namespace Novel {
     function scene_7(): ƒS.SceneReturn;
 }
 declare namespace Novel {
-    function scene_8(): ƒS.SceneReturn;
+    function scene_2(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_4(): ƒS.SceneReturn;
 }

@@ -84,6 +84,10 @@ namespace Novel {
 
         await ƒS.Text.print("Oben im Menü siehs du den Bereich <i>Getränkeliste</i>.<p>Auf die Liste kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst</p>");
         ƒS.Text.close();
+        await ƒS.Character.hide(characters.evan);
+        await ƒS.Character.hide(characters.celeste);
+        ƒS.Speech.hide();
+        await ƒS.update(1);
         
 
     }
