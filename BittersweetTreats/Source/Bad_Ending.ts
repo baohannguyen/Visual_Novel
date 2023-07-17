@@ -9,9 +9,10 @@ namespace Novel {
                 TX03: "Dann werde ich mich auf die Suche nach anderen Stellen begeben.",
                 TX04: "Der Job wäre super gewesen, hätte ich ihn bekommen.",
                 TX05: "Jetzt muss ich mich wieder auf der Suche nach neuen Stellenangeboten begeben.",
-                TX06: "Ich weiß nicht, ob ich das Mama erzählen soll, sie würde sich nur noch mehr Sorgen machen.",
-                TX07: "Und Lucia hätte sich auch gefreut, wenn ich den Job bekommen hätte, den sie mir vorgeschlagen hat.",
-                TX08: "Wie konnte ich das nur vermasseln?"
+                TX06: "Ich weiß nicht, ob ich das Mama erzählen soll.",
+                TX07: "Sie würde sich nur noch mehr Sorgen machen.",
+                TX08: "Und Lucia hätte sich auch gefreut, wenn ich den Job bekommen hätte, den sie mir vorgeschlagen hat.",
+                TX09: "Wie konnte ich das nur vermasseln?"
             },
             evan: {
                 TX01: "Es tut mir leid, Celeste.",
@@ -57,7 +58,7 @@ namespace Novel {
         await ƒS.update(1);
 
         // next location
-        ƒS.Sound.play(sounds.rain, 0.3, false);
+        ƒS.Sound.play(sounds.rain, 1, true);
         await signalDelay1();
         await ƒS.update(2);
         await ƒS.Location.show(locations.street);
@@ -69,7 +70,12 @@ namespace Novel {
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
-        await ƒS.Text.print("Du hast das Bad Ending erreicht");
+        await ƒS.Speech.tell(characters.celeste, text.celeste.TX09);
+        await ƒS.Text.print("Du hast das Bad Ending erreicht." +
+                            "<p>Das ist eins von drei Endings.</p>" +
+                            "<p>Du kannst die Novel gerne nochmal starten, um die anderen Endings zu erreichen." +
+                            "<p>Falls nicht, hoffe ich, dass dir die Novel Spaß gemacht hat :).");
+        return "Last Page";
         
     }
 }

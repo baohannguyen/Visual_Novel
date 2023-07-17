@@ -41,8 +41,6 @@ namespace Novel {
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
-        // ƒS.Sound.fade(music.cafe_theme, 0.2, 0.2);
-        // ƒS.Sound.play(sounds.talking_school, 0.1, false);
         await ƒS.Location.show(locations.classroom);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
         await signalDelay2();
@@ -84,5 +82,6 @@ namespace Novel {
         await ƒS.Character.hide(characters.lucia);
         ƒS.Speech.hide();
         await ƒS.update(1);
+        ƒS.Sound.fade(music.main_theme, 0, 0);
     }
 }

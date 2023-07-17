@@ -25,6 +25,7 @@ namespace Novel {
 
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
+        ƒS.Sound.fade(music.normal_ending_theme, 0.1, 0.2, true);
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.office);
         await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
@@ -33,6 +34,7 @@ namespace Novel {
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_neutral, ƒS.positionPercent(25, 100));
         await ƒS.Character.show(characters.evan, characters.evan.pose.neutral, ƒS.positionPercent(70, 105));
         await ƒS.update(2);
+        ƒS.Sound.play(sounds.hmm, 1.5);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX02);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX03);
@@ -45,9 +47,14 @@ namespace Novel {
         await ƒS.Character.hide(characters.celeste);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_happy, ƒS.positionPercent(25, 100));
         await ƒS.update(0.3);
+        ƒS.Sound.play(sounds.chuckle_female, 1.5);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
-        await ƒS.Text.print("Du hast das Normal Ending erreicht");
+        await ƒS.Text.print("Du hast das Normal Ending erreicht" +
+                            "<p>Das ist eins von drei Endings.</p>" +
+                            "<p>Du kannst die Novel gerne nochmal starten, um die anderen Endings zu erreichen." +
+                            "<p>Falls nicht, hoffe ich, dass dir die Novel Spaß gemacht hat :).");
+        return "Last Page";
         
     }
 }

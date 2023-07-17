@@ -5,7 +5,13 @@ declare namespace Novel {
     function scene_1(): ƒS.SceneReturn;
 }
 declare namespace Novel {
+    function scene_9(): ƒS.SceneReturn;
+}
+declare namespace Novel {
     function scene_6(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_6_2(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     export import ƒ = FudgeCore;
@@ -40,6 +46,8 @@ declare namespace Novel {
     let music: {
         main_theme: string;
         cafe_theme: string;
+        good_ending_theme: string;
+        normal_ending_theme: string;
     };
     let locations: {
         classroom: {
@@ -134,6 +142,10 @@ declare namespace Novel {
     function decreaseSound(): void;
     function seeCredits(): void;
     function seeDrinkList(): void;
+    function seeShortcuts(): void;
+}
+declare namespace Novel {
+    function scene_5_2(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     function scene_5(): ƒS.SceneReturn;

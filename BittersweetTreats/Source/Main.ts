@@ -33,10 +33,12 @@ namespace Novel {
         talking_school: "Audio/Sound/talking_school.mp3",
         chatter_school: "Audio/Sound/chatter_school.mp3"
     };
-    
+
     export let music = {
         main_theme: "Audio/Themes/Spring-Flowers.mp3",
-        cafe_theme: "Audio/Themes/romantic.mp3"
+        cafe_theme: "Audio/Themes/romantic.mp3",
+        good_ending_theme: "Audio/Themes/Roa_Memories_new.mp3",
+        normal_ending_theme: "Audio/Themes/Calm-and-Peaceful.mp3"
 
     };
 
@@ -163,7 +165,7 @@ namespace Novel {
     export function examAnimation(): ƒS.AnimationDefinition {
         return {
             start: { translation: ƒS.positionPercent(120, 100) },
-            end: { translation: ƒS.positionPercent(70, 100)}, //Figur verschwindete, weil Transparenz = 0 ist 
+            end: { translation: ƒS.positionPercent(70, 100) }, //Figur verschwindete, weil Transparenz = 0 ist 
             duration: 3,
             playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
         };
@@ -173,11 +175,11 @@ namespace Novel {
     let menuButtons = {
         save: "Save",
         load: "Load",
-        credits: "Credits",
         volumeUp: "+",
         volumeDown: "-",
+        credits: "Credits",
         drinkList: "Getränkeliste",
-        // ingredientList: "Zutatenliste"
+        shortcuts: "Shortcuts"
     };
 
     let gameMenu: ƒS.Menu;
@@ -187,45 +189,43 @@ namespace Novel {
 
     export function increaseSound(): void {
         if (volume >= 100)
-        return;
+            return;
         volume += 0.5;
         ƒS.Sound.setMasterVolume(volume);
     }
 
     export function decreaseSound(): void {
         if (volume <= 0)
-        return;
+            return;
         volume -= 0.5;
         ƒS.Sound.setMasterVolume(volume);
         console.log("Test");
-        
+
     }
 
     // true = Menü ist offen 
     let menuIsOpen: boolean = true;
 
     export function seeCredits(): void {
-      ƒS.Text.print("Bilder:....");  
+        ƒS.Text.print("Bilder:....");
     }
 
     export function seeDrinkList(): void {
-        ƒS.Text.print("Schokotraum: Kakaopulver und Milch" + 
-        "<p>Matcha Latte: Matchapulver und Milch</p>"
-        
-        
+        ƒS.Text.print("Schokotraum: Kakaopulver und Milch" +
+            "<p>Schlafenszeit: Kaffeepulver und heißes Wasser</p>"
+
+
         );
     }
 
-    // export function seeIngredientList(): void {
-    //     ƒS.Text.print("Kakaopulver" +
-    //     "<p>Kaffeepulver</p>" +
-    //     "<p>Matchapulver</p>" +
-    //     "<p>Milch</p>" +
-    //     "<p>Schlagsahne</p>" +
-    //     "<p>Zucker</p>"
-        
-    //     );
-    // }
+    export function seeShortcuts(): void {
+        ƒS.Text.print("S = Visual Novel wird gespeichert" +
+            "<p>C = Credits öffnen</p>" +
+            "<p>M = Menü wird geöffnet/geschlossen</p>" +
+            "<p>F11 = Vollbild-Modus</p>"
+
+        );
+    }
 
 
 
@@ -239,21 +239,21 @@ namespace Novel {
             case menuButtons.load:
                 await ƒS.Progress.load();
                 break;
-            case menuButtons.credits:
-                seeCredits();
-                break;
             case menuButtons.volumeUp:
                 increaseSound();
                 break;
             case menuButtons.volumeDown:
                 decreaseSound();
-                break;   
+                break;
+            case menuButtons.credits:
+                seeCredits();
+                break;
             case menuButtons.drinkList:
                 seeDrinkList();
                 break;
-            // case menuButtons.ingredientList:
-            //     seeIngredientList();
-            //     break;
+            case menuButtons.shortcuts:
+                seeShortcuts();
+                break;
 
             // case menuButtons.close:
             //     gameMenu.close();
@@ -290,7 +290,7 @@ namespace Novel {
                 console.log("Credits");
                 seeCredits();
                 break;
-                
+
 
 
         }
@@ -307,13 +307,15 @@ namespace Novel {
         let scenes: ƒS.Scenes = [
             // { scene: scene_1, name: "Conversation with mum" },
             // { scene: scene_2, name: "School" },
-            // { scene: scene_3, name: "Narrator" }
+            // { scene: scene_3, name: "Narrator" },
             // { scene: scene_4, name: "Talk with Evan" },
-            { scene: scene_5, name: "Mixing Drinks1" },
-            { id: "Choices (Matcha & Milch)", scene: scene_5_1, name: "Mixing Drinks2"},
-            { id: "Ending1", scene: scene_6, name: "Good Ending" },
-            // { scene: scene_7, name: "Normal Ending" },
-            // { scene: scene_8, name: "Bad Ending" }
+            // { scene: scene_5, name: "Mixing Drinks" },
+            // { id: "Final Round", scene: scene_5_2, name: "Mixing Drinks Final" },
+            // { id: "Good Ending", scene: scene_6, name: "First Ending" },
+            // { id: "Good Ending Part 2", scene: scene_6_2, name: "GE, Talk with mum"},
+            // { id: "Normal Ending", scene: scene_7, name: "Second Ending" },
+            { id: "Bad Ending", scene: scene_8, name: "Third Ending" },
+            { id: "Last Page", scene: scene_9, name: "End of Novel"}
         ];
 
 

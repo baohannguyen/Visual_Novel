@@ -5,9 +5,9 @@ namespace Novel {
         let text = {
             celeste: {
                 TX01: "Ja gerne, kommt sofort.",
-                TX02: "<i>Was war die erste Zutat für den Schokotraum?",
+                TX02: "<i>Was war die erste Zutat für den Schokotraum?</i>",
                 // TX03: "Hmm, was kommt nochmal als nächstes dran?",
-                TX04: "Jetzt fehlt mir nur noch die zweite Zutat, das war glaub ich...",
+                TX04: "<i>Jetzt fehlt mir nur noch die zweite Zutat, das war glaub ich...</i>",
                 TX05: "Hier ihr Getränk.",
                 TX06: "Vielen Dank, das freut mich.",
                 TX07: "Oh, das tut mir leid.",
@@ -31,10 +31,10 @@ namespace Novel {
                 TX11: "Celeste warte bitte im Büro auf mich."
             },
             customer: {
-                TX01: "Hallo, ich hätte gerne einmal den Schokotraum bitte.",
+                TX01: "Ich hätte gerne den Schokotraum bitte.",
                 TX01_2: "Hallo, ich hätte gerne einmal einen ... bitte.",
-                TX02: "Danke.",
-                TX03: "Das schmeckt super.",
+                TX02: "Vielen Dank.",
+                TX03: "Das schmeckt richtig gut.",
                 TX04: "Hmm, das schmeckt ein bisschen anders.",
                 TX05: "Aber man kann es trinken.",
                 TX06: "Es tut mir leid, aber das schmeckt gar nicht gut.",
@@ -48,16 +48,20 @@ namespace Novel {
 
         };
 
+        let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
-        // ƒS.Sound.play(music.cafe_theme, 0.3, true);
+        ƒS.Sound.fade(music.cafe_theme, 0.2, 0.2, true);
         await ƒS.Location.show(locations.cafe);
         await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
         await signalDelay2();
         await ƒS.update(1);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile, ƒS.positionPercent(50, 100));
         await ƒS.update(2);
+        await signalDelay1();
+        ƒS.Sound.play(sounds.cafe_door, 1);
+        await signalDelay2();
         await ƒS.Speech.tell(characters.customer, text.customer.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX02);
@@ -91,9 +95,11 @@ namespace Novel {
                         dataForSave.celesteScore += 50;
                         console.log(dataForSave.celesteScore);
                         ƒS.Sound.play(sounds.spoon_stir, 1);
+                        await signalDelay1();
                         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
                         await ƒS.Speech.tell(characters.customer, text.customer.TX02);
                         await ƒS.Speech.tell(characters.customer, text.customer.TX03);
+                        ƒS.Sound.play(sounds.chuckle_female, 1);
                         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
                         await ƒS.Character.show(characters.evan, characters.evan.pose.smile, ƒS.positionPercent(85, 105));
                         await ƒS.update(1);
@@ -103,12 +109,12 @@ namespace Novel {
                         await ƒS.Character.hide(characters.celeste);
                         ƒS.Speech.hide();
                         await ƒS.update(1);
-                        return "Choices (Matcha & Milch)";
+                        return "Final Round";
 
 
                     case chooseSecondIngredient.ingredientTwo:
                         console.log("Zucker");
-                        dataForSave.celesteScore -= 50;
+                        dataForSave.celesteScore += 0;
                         console.log(dataForSave.celesteScore);
                         ƒS.Sound.play(sounds.spoon_stir, 1);
                         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
@@ -130,7 +136,7 @@ namespace Novel {
                         await ƒS.Character.hide(characters.celeste);
                         ƒS.Speech.hide();
                         await ƒS.update(1);
-                        return "Choices (Matcha & Milch)";
+                        return "Final Round";
                 }
 
             ////////////////////////////////////////////////////////
@@ -173,7 +179,7 @@ namespace Novel {
                         await ƒS.Character.hide(characters.celeste);
                         ƒS.Speech.hide();
                         await ƒS.update(1);
-                        return "Choices (Matcha & Milch)";
+                        return "Final Round";
 
                     case secondOptionIngredient.ingredientTwo:
                         console.log("Zucker");
@@ -182,6 +188,7 @@ namespace Novel {
                         ƒS.Sound.play(sounds.spoon_stir, 1);
                         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
                         await ƒS.Speech.tell(characters.customer, text.customer.TX02);
+                        await signalDelay1();
                         await ƒS.Speech.tell(characters.customer, text.customer.TX06);
                         await ƒS.Speech.tell(characters.customer, text.customer.TX07);
                         await ƒS.Character.hide(characters.celeste);
@@ -202,7 +209,7 @@ namespace Novel {
                         await ƒS.Character.hide(characters.celeste);
                         ƒS.Speech.hide();
                         await ƒS.update(1);
-                        return "Choices (Matcha & Milch)";
+                        return "Final Round";
                 }
 
         }

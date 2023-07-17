@@ -40,7 +40,7 @@ namespace Novel {
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
-        //ƒS.Sound.play(music.cafe_theme, 0.3, true);
+        ƒS.Sound.fade(music.cafe_theme, 0.2, 0.2);
         await ƒS.Location.show(locations.cafe);
         await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
         ƒS.Sound.play(sounds.cafe_door, 1);
