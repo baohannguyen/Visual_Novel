@@ -3,7 +3,7 @@ namespace Novel {
         let text = {
             celeste: {
                 TX01: "Ja gerne, kommt sofort.",
-                TX02: "<i>Was war die erste Zutat für die Schlafenszeit?",
+                TX02: "<i>Was war die erste Zutat für die Schlafenszeit?</i>",
                 TX03: "<i>Jetzt fehlt mir nur noch die zweite Zutat, das war glaub ich...</i>",
                 TX04: "Hier ihr Getränk.",
                 TX05: "Vielen Dank, das freut mich.",
@@ -32,7 +32,7 @@ namespace Novel {
                 TX13: "Wir können gerne in meinem Büro weiterreden."
             },
             customer: {
-                TX01: "Ich hätte gerne die Schlafenszeit bitte.",
+                TX01: "Ich hätte gerne die <b>Schlafenszeit</b> bitte.",
                 TX02: "Vielen Dank.",
                 TX03: "Das schmeckt richtig gut.",
                 TX03_1: "Ich bin mit dem Getränk zufrieden.",
@@ -54,7 +54,7 @@ namespace Novel {
 
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.cafe);
-        await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
+        await ƒS.update(transition.cafe_strips.duration, transition.cafe_strips.alpha, transition.cafe_strips.edge);
         await signalDelay2();
         await ƒS.update(1);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile, ƒS.positionPercent(50, 100));

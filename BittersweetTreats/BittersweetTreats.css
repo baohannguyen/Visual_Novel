@@ -1,3 +1,4 @@
+
 html, body {
   width: 100vw;
   height: 100vh;
@@ -6,136 +7,156 @@ html, body {
   background-color: black;
   overflow: hidden;
   /* font-family: "Segoe UI", Arial; */
-  font-weight: normal;
-  font-size: 2.3vmin;
-  color: rgb(240, 18, 103);
-  user-select: none;
+  /* font-weight: normal; */
+  /* font-size: 2.3vmin; */
+  /* color: rgb(240, 18, 103); */
+  /* user-select: none; */
 }
-h1 {
-  font-family: Trebuchet MS, Arial, sans-serif;
-  color: rgb(99, 72, 50);
-}
-ul {
-  font-family: Trebuchet MS, Arial, sans-serif;
-  color: rgb(99, 72, 50);
-}
-scene {
-  width: 1280px;
-  height: 720px;
-  display: inline-block;
-  position: absolute;
-}
+
 canvas {
   width: 100%;
   height: 100%;
 }
 
-dialog[type="splash"] {
-  background-image: url("Images/menu.jpg");
-  width: 98%;
-  height: 100%;
-}
-
-dialog[type="splash"] > p {
+scene {
+  width: 1280px;
+  height: 720px;
+  display: inline-block;
   position: absolute;
-  font-size: 2vmin;
-  color: black;
-  /* text-align: center; */
+
 }
 
 #FudgeStoryLogo {
   display: block;
+  margin-top: 5px;
+  margin-left: 10px;
   width: 35%;
   border: 1px solid transparent;
   border-radius: 50px;
 
 }
 
- /* dialog[type=splash] { 
-  margin: 0px;
-  padding: 0px;
+#NovelTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 9%;
+}
+
+ dialog[type=splash] { 
   width: 100vw;
   height: 100vh;
-  background-color: white(0, 0, 0);
+  background-color: #ece0d1;
   color: black;
   border: none;
-  cursor: pointer;
   text-align: center;
-} */
-/* dialog[type=splash]>img#FudgeStoryLogo {
-  
-  
-  width: 30%;
+}
 
-} */
+#TextMenu {
+  margin-top: 5%;
+  font-family: Trebuchet MS, Arial, sans-serif;
+  font-size: 1.3vw;
+  color: rgb(56, 34, 15, .9);
+}
+
+
+
 speech {
   position: absolute;
-  bottom: 30px;
-  left: 138px;
-  /* color: beige; */
+  bottom: 3%;
+  left: 9%;
+  font-family: Trebuchet MS, Arial, sans-serif;
   border: 1px solid transparent;
   border-radius: 10px;
   background: rgb(56, 34, 15, .9);
-
   width: 80%;
-  height: 13%;
+  height: 12%;
 }
 
+speech name {
+  font-size: 3vh;
+  display: block;
+  color: #ece0d1;
+  margin: 5px 0px 10px 10px;
+}
 
 speech content {
-  font-family: Trebuchet MS, Arial, sans-serif;
+  font-size: 2.4vh;
   color: #ece0d1;
-  font-size: 1em;
-  position: absolute;
-  left: 10px;
-}
-
-name {
-  font-family: Trebuchet MS, Arial, sans-serif;
-  font-size: 1.5em;
   display: block;
-  color: #e9e0c8;
-  margin-top: 5px;
-  margin-bottom: 10px;
   margin-left: 10px;
 }
 
-.menuButtonsCSS {
+
+.menuButtons {
   position: absolute;
-  left: 50px;
-  color: white;
-  background-color: #e9e0c8;
+  border: none;
+  border-radius: 20px;
+  background-color: #967259;
 }
 
-/* .choicesCSSClass {
-  width: 300px;
-  padding: 20px;
-  
- 
-} */
+.menuButtons button {
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  padding-right: 10px;
+  font-family: Trebuchet MS, Arial, sans-serif;
+  font-size: 1.9vh;
+  color: #ece0d1;
+  background-color: #967259;
+}
+
+.menuButtons button:hover {
+  box-shadow: 0 0 20px rgba(26, 25, 25, 0.2);
+}
+
+.choicesDrinks {
+  border: none;
+  border-radius: 20px;
+  background-color: #AD8B73;
+
+}
+
+.choicesDrinks button {
+  border: none;
+  cursor: pointer;
+  padding: 5px 18px;
+  font-family: Trebuchet MS, Arial, sans-serif;
+  font-size: 2.8vh;
+  color: #ece0d1;
+  background-color: #AD8B73;
+}
+
+.choicesDrinks button:hover {
+  color: rgb(56, 34, 15, .9);
+}
 
 
 meter::-webkit-meter-bar { /*webkit ist für chrome */
-  background-color: #ececec;
+  background-color: white;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
 meter[id="celesteMeter"] {
   position: absolute;
   transform:rotate(-90deg);
   bottom: 50%;
-  left: -14%;
+  left: -12%;
   width: 35%;
   height: 10%;
 }
 
 meter[id="celesteMeter"]::-webkit-meter-optimum-value {
-  background-image: linear-gradient(
-    90deg,  
-    #a0e2f3 50%,
-    #f28f68 100%,
-    /*#cf82bf 150%,
-    #719fd1 200% */
-  );
-  /* background-color: #719fd1; */
+  background-color: #B68973;
+}
+
+dialog.NovelPages {
+  border: 2px solid #ece0d1;
+  border-radius: 15px;
+  font-family: Trebuchet MS, Arial, sans-serif;
+  font-size: 2.1vh;
+  color: #ece0d1;
+  background-color: #967259;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 

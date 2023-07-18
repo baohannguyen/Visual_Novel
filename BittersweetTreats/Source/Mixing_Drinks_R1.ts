@@ -31,7 +31,7 @@ namespace Novel {
                 TX11: "Celeste warte bitte im Büro auf mich."
             },
             customer: {
-                TX01: "Ich hätte gerne den Schokotraum bitte.",
+                TX01: "Ich hätte gerne den <b>Schokotraum</b> bitte.",
                 TX01_2: "Hallo, ich hätte gerne einmal einen ... bitte.",
                 TX02: "Vielen Dank.",
                 TX03: "Das schmeckt richtig gut.",
@@ -47,14 +47,15 @@ namespace Novel {
             }
 
         };
+        dataForSave.pickedMeterScene = true;
+        document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = false);
 
         let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
-        ƒS.Sound.fade(music.cafe_theme, 0.2, 0.2, true);
         await ƒS.Location.show(locations.cafe);
-        await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
+        await ƒS.update(transition.cafe_strips.duration, transition.cafe_strips.alpha, transition.cafe_strips.edge);
         await signalDelay2();
         await ƒS.update(1);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile, ƒS.positionPercent(50, 100));
@@ -197,7 +198,7 @@ namespace Novel {
                         await ƒS.Character.show(characters.evan, characters.evan.pose.neutral, ƒS.positionPercent(85, 105));
                         await ƒS.update(1);
                         await ƒS.Speech.tell(characters.evan, text.evan.TX06);
-                        ƒS.Sound.play(sounds.sigh_male, 1);
+                        ƒS.Sound.play(sounds.sigh_male, 1.5);
                         await ƒS.Speech.tell(characters.evan, text.evan.TX07);
                         await ƒS.Speech.tell(characters.evan, text.evan.TX08);
                         await ƒS.Speech.tell(characters.customer, text.customer.TX08);

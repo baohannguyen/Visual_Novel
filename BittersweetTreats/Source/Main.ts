@@ -10,9 +10,24 @@ namespace Novel {
             alpha: "Transitions/005.jpg",
             edge: 0.2
         },
-        boxes: {
+        cafe_strips: {
+            duration: 1,
+            alpha: "Transitions/9.jpg",
+            edge: 0.2
+        },
+        good_ending_transition: {
+            duration: 1,
+            alpha: "Transitions/018.jpg",
+            edge: 0.2
+        },
+        normal_ending_transition: {
             duration: 1,
             alpha: "Transitions/24.png",
+            edge: 0.2
+        },
+        bad_ending_transition: {
+            duration: 1,
+            alpha: "Transitions/038.jpg",
             edge: 0.2
         }
 
@@ -55,10 +70,10 @@ namespace Novel {
             name: "Living Room",
             background: "Background/livingroom.png"
         },
-        park: {
-            name: "Park",
-            background: "Background/park_evening.png"
-        },
+        // park: {
+        //     name: "Park",
+        //     background: "Background/park_evening.png"
+        // },
         street: {
             name: "Street Rain",
             background: "Background/street_rain.png"
@@ -69,7 +84,7 @@ namespace Novel {
         },
         blackScreen: {
             name: "Narrator Talk",
-            background: "Background/black_screen.png"
+            background: "Background/Narrator_screen.png"
         }
 
 
@@ -178,8 +193,8 @@ namespace Novel {
         volumeUp: "+",
         volumeDown: "-",
         credits: "Credits",
-        drinkList: "Getränkeliste",
-        shortcuts: "Shortcuts"
+        shortcuts: "Shortcuts",
+        drinkList: "Getränkeliste"
     };
 
     let gameMenu: ƒS.Menu;
@@ -207,22 +222,44 @@ namespace Novel {
     let menuIsOpen: boolean = true;
 
     export function seeCredits(): void {
-        ƒS.Text.print("Bilder:....");
-    }
+        ƒS.Text.addClass("NovelPages");
+        ƒS.Text.print("<b>Background</b>:" +
+        "<p>- Noraneko Games: https://noranekogames.itch.io/yumebackground</p>" +
+        "<p>- quarkyifu: https://quarkyifu.itch.io/visual-novel-backgrounds-office-bg-set</p>" +
+        "<p><b>Character Sprites</b>:" +
+        "<p>- Sutemo: https://sutemo.itch.io/female-character, https://sutemo.itch.io/female-mature-anime-sprite </p>" +
+        "<p>- Sraye: https://sraye.itch.io/mature-male-character-sprites</p>" +
+        "<p><b>Sounds</b>:" +
+        "<p>- https://www.audiyou.de/freesounds/</p>" +
+        "<p>- https://pixabay.com/de/</p>" +
+        "<p><b>Music</b>:" +
+        "<p>- Memories by Roa | https://soundcloud.com/roa_music1031/, Music promoted by https://www.chosic.com/free-music/all/</p>" +
+        "<p>Creative Commons CC BY 3.0 https://creativecommons.org/licenses/by/3.0/</p>" +
+        "<p>- Calm and Peaceful by LesFM | https://lesfm.net/relaxing-background-music/, Music promoted by https://www.chosic.com/free-music/all/</p>" +
+        "<p>Creative Commons CC BY 3.0 https://creativecommons.org/licenses/by/3.0/</p>" +
+        "<p>- Spring Flowers by Keys of Moon | https://soundcloud.com/keysofmoon, Music promoted by https://www.chosic.com/free-music/all/</p>" +
+        "<p>Creative Commons CC BY 4.0 https://creativecommons.org/licenses/by/4.0/</p>" +
+        "<p>- Music I Use: Bensound.com/free-music-for-videos</p>"
 
-    export function seeDrinkList(): void {
-        ƒS.Text.print("Schokotraum: Kakaopulver und Milch" +
-            "<p>Schlafenszeit: Kaffeepulver und heißes Wasser</p>"
-
-
+        
         );
     }
 
+    export function seeDrinkList(): void {
+        ƒS.Text.addClass("NovelPages");
+        ƒS.Text.print("Schokotraum: Kakaopulver und Milch" +
+            "<p>Schlafenszeit: Kaffeepulver und heißes Wasser</p>"
+            );
+        
+    }
+
     export function seeShortcuts(): void {
+        ƒS.Text.addClass("NovelPages");
         ƒS.Text.print("S = Visual Novel wird gespeichert" +
             "<p>C = Credits öffnen</p>" +
             "<p>M = Menü wird geöffnet/geschlossen</p>" +
-            "<p>F11 = Vollbild-Modus</p>"
+            "<p>F11 = Vollbild-Modus</p>" +
+            "<p>Weiter mit LMT oder Leertaste</p>"
 
         );
     }
@@ -255,10 +292,6 @@ namespace Novel {
                 seeShortcuts();
                 break;
 
-            // case menuButtons.close:
-            //     gameMenu.close();
-            //     menuIsOpen = false; //false = Menü ist zu
-            //     break;
         }
 
     }
@@ -297,23 +330,20 @@ namespace Novel {
     }
 
 
-
-
-
     window.addEventListener("load", start);
     function start(_event: Event): void {
-        gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
+        gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtons");
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
-            // { scene: scene_1, name: "Conversation with mum" },
-            // { scene: scene_2, name: "School" },
-            // { scene: scene_3, name: "Narrator" },
-            // { scene: scene_4, name: "Talk with Evan" },
-            // { scene: scene_5, name: "Mixing Drinks" },
-            // { id: "Final Round", scene: scene_5_2, name: "Mixing Drinks Final" },
-            // { id: "Good Ending", scene: scene_6, name: "First Ending" },
-            // { id: "Good Ending Part 2", scene: scene_6_2, name: "GE, Talk with mum"},
-            // { id: "Normal Ending", scene: scene_7, name: "Second Ending" },
+            { scene: scene_1, name: "Conversation with mum" },
+            { scene: scene_2, name: "School" },
+            { scene: scene_3, name: "Narrator" },
+            { scene: scene_4, name: "Talk with Evan" },
+            { scene: scene_5, name: "Mixing Drinks" },
+            { id: "Final Round", scene: scene_5_2, name: "Mixing Drinks Final" },
+            { id: "Good Ending", scene: scene_6, name: "First Ending" },
+            { id: "Good Ending Part 2", scene: scene_6_2, name: "GE, Talk with mum"},
+            { id: "Normal Ending", scene: scene_7, name: "Second Ending" },
             { id: "Bad Ending", scene: scene_8, name: "Third Ending" },
             { id: "Last Page", scene: scene_9, name: "End of Novel"}
         ];

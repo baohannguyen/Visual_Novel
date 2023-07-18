@@ -33,7 +33,7 @@ namespace Novel {
 
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.office);
-        await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
+        await ƒS.update(transition.bad_ending_transition.duration, transition.bad_ending_transition.alpha, transition.bad_ending_transition.edge);
         await signalDelay2();
         await ƒS.update(1);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_sad, ƒS.positionPercent(25, 100));
@@ -62,7 +62,7 @@ namespace Novel {
         await signalDelay1();
         await ƒS.update(2);
         await ƒS.Location.show(locations.street);
-        await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
+        await ƒS.update(transition.bad_ending_transition.duration, transition.bad_ending_transition.alpha, transition.bad_ending_transition.edge);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_sad, ƒS.positionPercent(50, 100));
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
@@ -71,10 +71,12 @@ namespace Novel {
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX09);
-        await ƒS.Text.print("Du hast das Bad Ending erreicht." +
+        await signalDelay2();
+        ƒS.Text.addClass("NovelPages");
+        await ƒS.Text.print("Du hast das <b>Bad Ending</b> erreicht." +
                             "<p>Das ist eins von drei Endings.</p>" +
                             "<p>Du kannst die Novel gerne nochmal starten, um die anderen Endings zu erreichen." +
-                            "<p>Falls nicht, hoffe ich, dass dir die Novel Spaß gemacht hat :).");
+                            "<p>Falls nicht, hoffe ich, dass dir die Novel trotzdem Spaß gemacht hat :).");
         return "Last Page";
         
     }

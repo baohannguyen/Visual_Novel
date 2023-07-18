@@ -23,12 +23,13 @@ namespace Novel {
         dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
 
+        // let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Sound.fade(music.normal_ending_theme, 0.1, 0.2, true);
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.office);
-        await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
+        await ƒS.update(transition.normal_ending_transition.duration, transition.normal_ending_transition.alpha, transition.normal_ending_transition.edge);
         await signalDelay2();
         await ƒS.update(1);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_neutral, ƒS.positionPercent(25, 100));
@@ -50,7 +51,9 @@ namespace Novel {
         ƒS.Sound.play(sounds.chuckle_female, 1.5);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
-        await ƒS.Text.print("Du hast das Normal Ending erreicht" +
+        await signalDelay2();
+        ƒS.Text.addClass("NovelPages");
+        await ƒS.Text.print("Du hast das <b>Normal Ending</b> erreicht" +
                             "<p>Das ist eins von drei Endings.</p>" +
                             "<p>Du kannst die Novel gerne nochmal starten, um die anderen Endings zu erreichen." +
                             "<p>Falls nicht, hoffe ich, dass dir die Novel Spaß gemacht hat :).");

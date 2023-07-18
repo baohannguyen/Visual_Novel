@@ -11,7 +11,10 @@ namespace Novel {
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
         await ƒS.update(1);
         await signalDelay1();
-        await ƒS.Text.print("Innerhalb einer Woche hat sich Celeste für die Stelle beworben. Nach ein paar Tagen hat sie eine Antwort bekommen und muss, um die Stelle zu kriegen Probearbeiten.");
+        ƒS.Text.addClass("NovelPages");
+        await ƒS.Text.print("<p>Innerhalb einer Woche hat sich Celeste für die Stelle im Lovely Java beworben.</p>" +
+        "<p>Nach ein paar Tagen hat sie eine Antwort bekommen und muss, um die Stelle zu kriegen, Probearbeiten.</p>");
         ƒS.Text.close();
+        await signalDelay1();
     }
 }

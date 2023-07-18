@@ -39,13 +39,12 @@ namespace Novel {
         // Code um die Meter-Bar auszublenden
         dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
-        // document.getElementById("scoreForAisaka").style.display = "none";
 
         //ƒS.Speech.setTickerDelays(40, 500);
         let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]); //verzögert die Zeit zwischen den Texten
 
-        ƒS.Sound.fade(music.main_theme, 0.3, 0.2);
+        ƒS.Sound.fade(music.main_theme, 0.3, 0.2, true);
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.living_room);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);

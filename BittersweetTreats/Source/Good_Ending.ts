@@ -27,7 +27,7 @@ namespace Novel {
         ƒS.Sound.fade(music.good_ending_theme, 0.1, 0.2, true);
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.office);
-        await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
+        await ƒS.update(transition.good_ending_transition.duration, transition.good_ending_transition.alpha, transition.good_ending_transition.edge);
         await signalDelay2();
         await ƒS.update(1);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_smile, ƒS.positionPercent(25, 100));

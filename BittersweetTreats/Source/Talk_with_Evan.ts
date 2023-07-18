@@ -24,7 +24,7 @@ namespace Novel {
                 TX05: "Nun zu deiner Bewerbung.",
                 TX06: "Ich fand sie sehr vielversprechend und glaube, dass du gut zu uns passen würdest.",
                 TX07: "Aber ich hab dich erstmal zum Probearbeiten eingeladen, weil ich sehen möchte wie du mit den Aufgaben zurechtkommst.",
-                TX08: "<i>Lovely Java</i> ist bekannt für seine verschiedene Getränke und Kaffees, die wir für unsere Kunden mischen.",
+                TX08: "<b>Lovely Java</b> ist bekannt für seine verschiedene Getränke und Kaffees, die wir für unsere Kunden mischen.",
                 TX09: "Aus dem Grund wirst du heute ein paar Getränke mischen.",
                 TX10: "Du kriegst eine Liste, wo drauf steht aus welchen Zutaten, die einzelnen Getränken und Kaffees bestehen.",
                 TX11: "Die Liste kannst du dir jederzeit anschauen, falls du nicht weiterweißt.",
@@ -40,9 +40,9 @@ namespace Novel {
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Speech.hide();
-        ƒS.Sound.fade(music.cafe_theme, 0.2, 0.2);
+        ƒS.Sound.fade(music.cafe_theme, 0.2, 0.2, true);
         await ƒS.Location.show(locations.cafe);
-        await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
+        await ƒS.update(transition.cafe_strips.duration, transition.cafe_strips.alpha, transition.cafe_strips.edge);
         ƒS.Sound.play(sounds.cafe_door, 1);
         await signalDelay2();
         await ƒS.update(1);
@@ -81,8 +81,13 @@ namespace Novel {
         await ƒS.Speech.tell(characters.evan, text.evan.TX13);
 
         await signalDelay1();
-
-        await ƒS.Text.print("Oben im Menü siehs du den Bereich <i>Getränkeliste</i>.<p>Auf die Liste kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst</p>");
+        ƒS.Text.addClass("NovelPages");
+        await ƒS.Text.print("Oben im Menü siehst du den Bereich <b>Getränkeliste</b>." + 
+        "<p>Auf die Liste kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst.</p>" +
+        "<p>Deine Leistung wird anhand eines Meter-Bars gemessen, da kannst immer du sehen, ob du die richtige Wahl getroffen hast.</p>" +
+        "<p>Viel Erfolg!</p>"
+        
+        );
         ƒS.Text.close();
         await ƒS.Character.hide(characters.evan);
         await ƒS.Character.hide(characters.celeste);

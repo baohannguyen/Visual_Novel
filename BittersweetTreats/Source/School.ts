@@ -24,7 +24,7 @@ namespace Novel {
                 TX05: "Sophie hat einen Laden entdeckt mit vielen schönen Dekorationen und ich hab gefragt, ob wir alle mal hingehen wollen.",
                 TX06: "Aber ist eigentlich alles gut bei dir? Du bist in den letzten Tagen abwesend.",
                 TX07: "Worum ging es?",
-                TX08: "Hmm kennst du das Café <i>Lovely Java</i>?",
+                TX08: "Hmm kennst du das Café <b>Lovely Java</b>?",
                 TX09: "Genau, ich hab gehört, dass sie zurzeit nach Aushilfen suchen.",
                 TX10: "Das wäre eine gute Möglichkeit für dich, vor allem weil das Gehalt dort sehr gut sein soll und der Laden beliebt ist.",
                 TX11: "Hab ich doch gern gemacht."
@@ -35,7 +35,6 @@ namespace Novel {
             }
         };
 
-        // let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
@@ -73,8 +72,8 @@ namespace Novel {
         await ƒS.Character.hide(characters.celeste);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.school_smile, ƒS.positionPercent(70, 100));
         await ƒS.update(0.3);
+        ƒS.Sound.play(sounds.chuckle_female, 1);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX11);
-        ƒS.Sound.play(sounds.chuckle_female, 0.3, false);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX11);
 
         await signalDelay2();

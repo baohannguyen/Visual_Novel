@@ -22,7 +22,22 @@ declare namespace Novel {
             alpha: string;
             edge: number;
         };
-        boxes: {
+        cafe_strips: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        good_ending_transition: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        normal_ending_transition: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        bad_ending_transition: {
             duration: number;
             alpha: string;
             edge: number;
@@ -59,10 +74,6 @@ declare namespace Novel {
             background: string;
         };
         living_room: {
-            name: string;
-            background: string;
-        };
-        park: {
             name: string;
             background: string;
         };
@@ -149,9 +160,6 @@ declare namespace Novel {
 }
 declare namespace Novel {
     function scene_5(): ƒS.SceneReturn;
-}
-declare namespace Novel {
-    function scene_5_1(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     function scene_3(): ƒS.SceneReturn;

@@ -15,11 +15,12 @@
 <body>
   <scene>
     <canvas></canvas>
-
+  
     <speech>
       <name></name>
       <content></content>
     </speech>
+  
     <div type="interface">
       <input id="scoreForCeleste" type="text" value="Celeste" disabled>
       <!-- für value der Skala; Füllung -->
@@ -27,6 +28,7 @@
     </div>
     
     <dialog type="text">
+      
       The content of a page of text for reading
     </dialog>
     <dialog type="gameMenu">
@@ -36,14 +38,14 @@
   </scene>
   <dialog type="splash" open>
     <img id="FudgeStoryLogo" theme="light" /> <!-- use "light" or "dark" -->
-    <h1>Bittersweet Treats</h1>
-    <ul>
-      <p>Bevor du mit der Visual Novel startest, siehst du hier die wichtigsten Shortcuts für das Menü</p>
-      <li>S = Visual Novel wird gespeichert</li>
-      <li>C = Credits öffnen</li>
-      <li>M = Menü wird geöffnet/geschlossen </li>
-      <li>F11 = Vollbild-Modus</li>
-    </ul>
+    <div id="NovelTitle" >
+    <img  src="Images/Novel_Titel.png">
+    </div>
+    <div id="TextMenu">
+      Willkommen zur Visual Novel <b>Bittersweet Treats</b>!
+      <p>Mit M kannst du das Menü öffnen, da findest du die wichtigsten Shortcuts für die Novel.</p>
+      <p>Viel Spaß beim Spielen!</p>
+  </div>
   </dialog>
 </body>
 
