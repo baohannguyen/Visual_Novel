@@ -508,7 +508,7 @@ var Novel;
         Novel.ƒS.Text.addClass("NovelPages");
         Novel.ƒS.Text.print("S = Visual Novel wird gespeichert" +
             "<p>C = Credits öffnen</p>" +
-            "<p>M = Menü wird geöffnet/geschlossen</p>" +
+            "<p>M = Menü öffnen/schließen</p>" +
             "<p>F11 = Vollbild-Modus</p>" +
             "<p>Weiter mit LMT oder Leertaste</p>");
     }
