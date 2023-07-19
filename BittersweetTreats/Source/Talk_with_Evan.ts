@@ -6,19 +6,20 @@ namespace Novel {
             celeste: {
                 TX01: "<i>Wow das Café sieht richtig schön aus.</i>",
                 TX02: "<i>Hier ist auch eine Menge los.</i>",
-                TX03: "<i>Ich muss den Chef Evan finden.</i>",
+                TX03: "<i>Aber ich muss jetzt erstmal den Chef Evan finden.</i>",
                 TX04: "<i>Er hat gemeint, dass wir uns am Tresen treffen werden.</i>",
-                TX05: "Entschuldigung, ich suche gerade nach ihrem Chef Evan.",
+                TX05: "Entschuldigung, ich suche nach ihrem Chef Evan.",
                 TX06: "Wir haben einen Termin vereinbart.",
-                TX07: "Ja genau, es freut mich auch Sie kennenzulernen.",
+                TX07: "Ja genau. ",
                 TX08: "<i>Ich muss also für die Kunden Getränke mischen, damit ich die Stelle bekomme.</i>",
-                TX09: "<i>Das werde ich auf jeden Fall hinkriegen.</i>",
+                TX09: "<i>Das werde ich auf jeden Fall hinkriegen!</i>",
                 TX10: "Ja ich habe alles verstanden.",
-                TX11: "Wir können direkt loslegen."
+                TX11: "Wir können direkt loslegen.",
+                TX12: "Es freut mich auch Sie kennenzulernen."
             },
             evan: {
-                TX01: "Ah Hallo du bist Celeste richtig?",
-                TX02: "Schön dich kennenzulernen, ich bin Evan.",
+                TX01: "Ah Hallo du musst bestimmt Celeste sein.",
+                TX02: "Schön dich kennenzulernen.",
                 TX03: "Wir haben bis jetzt wegen deiner Bewerbung nur telefoniert.",
                 TX04: "Du kannst mich gerne duzen.",
                 TX05: "Nun zu deiner Bewerbung.",
@@ -29,7 +30,8 @@ namespace Novel {
                 TX10: "Du kriegst eine Liste, wo drauf steht aus welchen Zutaten, die einzelnen Getränken und Kaffees bestehen.",
                 TX11: "Die Liste kannst du dir jederzeit anschauen, falls du nicht weiterweißt.",
                 TX12: "Hast du soweit alles verstanden?",
-                TX13: "Das höre ich doch gerne."
+                TX13: "Super das höre ich doch gerne.",
+                TX14: "Ich bin Evan."
             }
         };
 
@@ -43,6 +45,7 @@ namespace Novel {
         ƒS.Sound.fade(music.cafe_theme, 0.2, 0.2, true);
         await ƒS.Location.show(locations.cafe);
         await ƒS.update(transition.cafe_strips.duration, transition.cafe_strips.alpha, transition.cafe_strips.edge);
+        await signalDelay1();
         ƒS.Sound.play(sounds.cafe_door, 1);
         await signalDelay2();
         await ƒS.update(1);
@@ -58,8 +61,10 @@ namespace Novel {
         await ƒS.update(2);
         await ƒS.Speech.tell(characters.evan, text.evan.TX01);
         await ƒS.Speech.tell(characters.evan, text.evan.TX02);
+        await ƒS.Speech.tell(characters.evan, text.evan.TX14);
         await ƒS.Speech.tell(characters.evan, text.evan.TX03);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
+        await ƒS.Speech.tell(characters.celeste, text.celeste.TX12);
         await ƒS.Speech.tell(characters.evan, text.evan.TX04);
         await ƒS.Speech.tell(characters.evan, text.evan.TX05);
         await ƒS.Speech.tell(characters.evan, text.evan.TX06);
@@ -84,9 +89,9 @@ namespace Novel {
         ƒS.Text.addClass("NovelPages");
         await ƒS.Text.print("Oben im Menü siehst du den Bereich <b>Getränkeliste</b>." + 
         "<p>Auf die Liste kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst.</p>" +
-        "<p>Deine Leistung wird anhand eines Meter-Bars gemessen, da kannst immer du sehen, ob du die richtige Wahl getroffen hast.</p>" +
+        "<p>Deine Leistung wird anhand eines Meter-Bars gemessen.</p>" +
+        "<p>Da kannst immer du sehen, ob du die richtige Wahl getroffen hast.</p>" +
         "<p>Viel Erfolg!</p>"
-        
         );
         ƒS.Text.close();
         await ƒS.Character.hide(characters.evan);

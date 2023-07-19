@@ -9,11 +9,12 @@ namespace Novel {
                 TX03: "Ich bin so froh, dass ich den Job habe, jetzt muss du dir nicht mehr so viele Sorgen, um das Geld machen."
             },
             celeste_mum: {
-                TX01: "Das hat mich richtig erschreckt.",
-                TX02: "Was ist passiert?",
-                TX03: "Oh da, wofür du dich letzte Woche beworben hast?",
-                TX04: "Das freut mich, mein Schatz.",
-                TX05: "Ich bin richtig stolz auf dich."
+                TX01: "Celeste!",
+                TX02: "Erschreckt mich nicht so.",
+                TX03: "Was ist passiert?",
+                TX04: "Da wofür du dich letzte Woche beworben hast?",
+                TX05: "Das freut mich, dass du die Stelle bekommen hast mein Schatz.",
+                TX06: "Ich bin richtig stolz auf dich."
             }
         };
 
@@ -37,13 +38,14 @@ namespace Novel {
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX01);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX02);
-        await ƒS.Speech.tell(characters.celeste, text.celeste.TX02);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX03);
+        await ƒS.Speech.tell(characters.celeste, text.celeste.TX02);
+        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX04);
         await ƒS.Character.hide(characters.celeste_mum);
         await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.happy, ƒS.positionPercent(70, 100));
         await ƒS.update(0.3);
-        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX04);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX05);
+        await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX06);
         ƒS.Sound.play(sounds.chuckle_female, 1.5);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX03);
         await signalDelay2();

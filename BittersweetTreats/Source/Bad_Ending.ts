@@ -16,11 +16,12 @@ namespace Novel {
             },
             evan: {
                 TX01: "Es tut mir leid, Celeste.",
-                TX02: "Aber das war grade gar nicht gut.",
-                TX03: "Du hast die Getränke falsch gemischt, dann war der Kunde noch so lieb und hat dir noch eine zweite Chance gegeben.",
-                TX04: "Das kann ich nicht so akzeptieren, die Stelle kann ich dir daher nicht vergeben.",
-                TX05: "Mach das.",
-                TX06: "Ich wünsche dir trotzdem viel Glück für deinen nächsten Job."
+                TX02: "Aber das war gerade gar nicht gut.",
+                TX03: "Du hast die Getränke falsch gemischt, der Kunde war so lieb und hat dir noch eine zweite Chance gegeben.",
+                TX04: "Das kann ich so nicht akzeptieren.",
+                TX05: "Die Stelle kann ich dir daher nicht vergeben.",
+                TX06: "Mach das.",
+                TX07: "Ich wünsche dir trotzdem weiterhin viel Glück für deinen nächsten Job."
             }
         };
 
@@ -45,13 +46,13 @@ namespace Novel {
         await ƒS.Speech.tell(characters.evan, text.evan.TX02);
         await ƒS.Speech.tell(characters.evan, text.evan.TX03);
         await ƒS.Speech.tell(characters.evan, text.evan.TX04);
+        await ƒS.Speech.tell(characters.evan, text.evan.TX05);
         await signalDelay1();
-        ƒS.Sound.play(sounds.oh, 1);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX02);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX03);
-        await ƒS.Speech.tell(characters.evan, text.evan.TX05);
         await ƒS.Speech.tell(characters.evan, text.evan.TX06);
+        await ƒS.Speech.tell(characters.evan, text.evan.TX07);
         await ƒS.Character.hide(characters.evan);
         await ƒS.Character.hide(characters.celeste);
         ƒS.Speech.hide();
@@ -65,6 +66,7 @@ namespace Novel {
         await ƒS.update(transition.bad_ending_transition.duration, transition.bad_ending_transition.alpha, transition.bad_ending_transition.edge);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_sad, ƒS.positionPercent(50, 100));
         await ƒS.update(1);
+        ƒS.Sound.play(sounds.sigh_female, 1);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);

@@ -16,7 +16,8 @@ namespace Novel {
                 TX01: "Ich fand, dadurch dass du es zum ersten Mal gemacht hast, war deine Leistung durchschnittlich.",
                 TX02: "Es sind dir dennoch ein paar Fehler passiert.",
                 TX03: "Ich würde dich trotzdem einstellen, weil ich Potenzial in dir sehe und glaube, dass du besser wirst, je öfter du das machst.",
-                TX04: "Aber bei deinen nächsten Schichten, werde ich trotzdem da sein und es bei dir kontrollieren, damit bei dir nicht mehr so oft Fehler vorkommen."
+                TX04: "Aber bei deinen nächsten Schichten, werde ich trotzdem da sein, um ab und zu bei dir rüberzuschauen, damit du es auch richtig machst.",
+                TX05: "Auf diese Weise passieren dir nicht mehr so oft Fehler."
             }
         };
 
@@ -44,6 +45,7 @@ namespace Novel {
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
         await ƒS.Speech.tell(characters.evan, text.evan.TX03);
         await ƒS.Speech.tell(characters.evan, text.evan.TX04);
+        await ƒS.Speech.tell(characters.evan, text.evan.TX05);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
         await ƒS.Character.hide(characters.celeste);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_happy, ƒS.positionPercent(25, 100));

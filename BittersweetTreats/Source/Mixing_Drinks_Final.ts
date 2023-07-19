@@ -13,7 +13,7 @@ namespace Novel {
                 TX09: "Aber es tut mir ebenfalls leid, dass ich das Getränk falsch gemischt habe.",
                 TX10: "Die nächste Mischung wird auf jeden Fall richtig sein.",
                 TX11: "... das tut mir wirklich leid.",
-                TX12: "<i>Hmm, da bin ich gespannt, was er von meine Arbeit sagen wird.</i>",
+                TX12: "<i>Hmm da bin ich mal gespannt, was er über meine Leistung sagen wird.</i>",
                 TX13: "Ja, können wir gerne machen."
             },
             evan: {
@@ -43,9 +43,9 @@ namespace Novel {
                 TX08: "Das ist in Ordnung, solange ich ein neues bekomme.",
                 TX09: "Wenn ich das richtig höre, macht sie das zum ersten Mal.",
                 TX10: "Das schmeckt schon wieder schlecht.",
-                TX11: "Also, das kann ich nicht mehr so akzeptieren.",
+                TX11: "Also das kann ich nicht mehr so akzeptieren.",
                 TX12: "Das kann gar nicht sein.",
-                TX13: "Ich habe Ihnen öfters eine Chance gegeben."
+                TX13: "Ich habe ihnen sogar öfters eine Chance gegeben."
             }
         };
 
@@ -79,7 +79,7 @@ namespace Novel {
                 await ƒS.Speech.tell(characters.celeste, text.celeste.TX03);
 
                 let chooseSecondIngredient = {
-                    ingredientOne: "heißes Wasser",
+                    ingredientOne: "kochendes Wasser",
                     ingredientTwo: "Sahne"
                 };
 
@@ -87,7 +87,7 @@ namespace Novel {
 
                 switch (secondChoice) {
                     case chooseSecondIngredient.ingredientOne:
-                        console.log("heißes Wasser");
+                        console.log("kochendes Wasser");
                         dataForSave.celesteScore += 50;
                         console.log(dataForSave.celesteScore);
                         ƒS.Sound.play(sounds.spoon_stir, 1);
@@ -188,7 +188,7 @@ namespace Novel {
                 await ƒS.Speech.tell(characters.celeste, text.celeste.TX03);
 
                 let secondOptionIngredient = {
-                    ingredientOne: "heißes Wasser",
+                    ingredientOne: "kochendes Wasser",
                     ingredientTwo: "Sahne"
                 };
 
@@ -196,7 +196,7 @@ namespace Novel {
 
                 switch (secondRound) {
                     case secondOptionIngredient.ingredientOne:
-                        console.log("heißes Wasser");
+                        console.log("kochendes Wasser");
                         dataForSave.celesteScore += 50;
                         console.log(dataForSave.celesteScore);
                         ƒS.Sound.play(sounds.spoon_stir, 1);
@@ -250,6 +250,7 @@ namespace Novel {
                         await ƒS.update(1);
                         await ƒS.Speech.tell(characters.evan, text.evan.TX03);
                         await ƒS.Speech.tell(characters.evan, text.evan.TX04);
+                        await ƒS.Speech.tell(characters.evan, text.evan.TX05);
                         await ƒS.Character.hide(characters.celeste);
                         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_oh, ƒS.positionPercent(50, 100));
                         await ƒS.update(0.3);

@@ -335,10 +335,10 @@ namespace Novel {
         gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtons");
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
-            { scene: scene_1, name: "Conversation with mum" },
-            { scene: scene_2, name: "School" },
-            { scene: scene_3, name: "Narrator" },
-            { scene: scene_4, name: "Talk with Evan" },
+            // { scene: scene_1, name: "Conversation with mum" },
+            // { scene: scene_2, name: "School" },
+            // { scene: scene_3, name: "Narrator" },
+            // { scene: scene_4, name: "Talk with Evan" },
             { scene: scene_5, name: "Mixing Drinks" },
             { id: "Final Round", scene: scene_5_2, name: "Mixing Drinks Final" },
             { id: "Good Ending", scene: scene_6, name: "First Ending" },

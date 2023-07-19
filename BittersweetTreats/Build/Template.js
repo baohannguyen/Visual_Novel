@@ -17,11 +17,12 @@ var Novel;
             },
             evan: {
                 TX01: "Es tut mir leid, Celeste.",
-                TX02: "Aber das war grade gar nicht gut.",
-                TX03: "Du hast die Getränke falsch gemischt, dann war der Kunde noch so lieb und hat dir noch eine zweite Chance gegeben.",
-                TX04: "Das kann ich nicht so akzeptieren, die Stelle kann ich dir daher nicht vergeben.",
-                TX05: "Mach das.",
-                TX06: "Ich wünsche dir trotzdem viel Glück für deinen nächsten Job."
+                TX02: "Aber das war gerade gar nicht gut.",
+                TX03: "Du hast die Getränke falsch gemischt, der Kunde war so lieb und hat dir noch eine zweite Chance gegeben.",
+                TX04: "Das kann ich so nicht akzeptieren.",
+                TX05: "Die Stelle kann ich dir daher nicht vergeben.",
+                TX06: "Mach das.",
+                TX07: "Ich wünsche dir trotzdem weiterhin viel Glück für deinen nächsten Job."
             }
         };
         Novel.dataForSave.pickedMeterScene = true;
@@ -42,13 +43,13 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX04);
+        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX05);
         await signalDelay1();
-        Novel.ƒS.Sound.play(Novel.sounds.oh, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
-        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX06);
+        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX07);
         await Novel.ƒS.Character.hide(Novel.characters.evan);
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
         Novel.ƒS.Speech.hide();
@@ -61,6 +62,7 @@ var Novel;
         await Novel.ƒS.update(Novel.transition.bad_ending_transition.duration, Novel.transition.bad_ending_transition.alpha, Novel.transition.bad_ending_transition.edge);
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_sad, Novel.ƒS.positionPercent(50, 100));
         await Novel.ƒS.update(1);
+        Novel.ƒS.Sound.play(Novel.sounds.sigh_female, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX06);
@@ -83,8 +85,8 @@ var Novel;
         console.log("Scene 1");
         let text = {
             celeste: {
-                TX01: "Alles gut bei dir Mama? Du siehst erschöpft aus.",
-                TX02: "<i>Stimmt, letzten Monat hat sich Mama ihr Handgelenk gebrochen, weil sie hingefallen ist.</i>",
+                TX01: "Alles gut bei dir Mama?",
+                TX02: "<i>Oh Stimmt.</i>",
                 TX03: "<i>Eigentlich soll sie weniger arbeiten und sich mehr ausruhen.</i>",
                 TX04: "Kannst du nicht mal nachfragen, ob du in den nächsten Wochen weniger arbeiten kannst?",
                 TX05: "So wie es aussieht, konnte deine Hand sich nicht komplett ausruhen.",
@@ -93,30 +95,34 @@ var Novel;
                 TX08: "Wenn ich einen Teilzeitjob habe, dann kommen wir noch gut über die Runden.",
                 TX09: "Mach dir da keine Sorgen Mama.",
                 TX10: "Wenn du jetzt weniger arbeitest, hast du mehr Zeit für Grace und kannst auf sie aufpassen.",
-                TX11: "Sie wird sich bestimmt freuen, dich öfters im Haus zu sehen, um mit dir Zeit zu verbringen.",
+                TX11: "Sie wird sich bestimmt freuen dich öfters im Haus zu sehen, um mit dir Zeit zu verbringen.",
                 TX12: "Außerdem brauchst du wirklich eine Pause, sonst belastest du dich nur noch mehr damit.",
-                TX13: "Ja werde ich machen."
+                TX13: "Ja werde ich machen.",
+                TX14: "Du siehst erschöpft aus.",
+                TX15: "<i>Letzten Monat hat sich Mama ihr Handgelenk gebrochen, weil sie hingefallen ist.</i>"
             },
             celeste_mum: {
                 TX01: "...",
                 TX02: "Hallo mein Schatz.",
-                TX03: "Nicht wirklich, in letzter Zeit fällt es mir schwer meine Arbeit zu machen, weil ich Schmerzen in mein Handgelenk habe.",
+                TX03: "Nicht wirklich, in letzter Zeit fällt es mir schwer im Krankenhaus zu arbeiten, weil ich Schmerzen in mein Handgelenk habe.",
                 TX04: "Vor allem seit ich sie vor einem Monat gebrochen habe.",
                 TX05: "Darüber habe ich mir auch schon Gedanken gemacht.",
                 TX06: "Aber das wird finanziell schwierig für uns, wenn ich weniger arbeiten werde, weil sich mein Gehalt dadurch kürzen wird.",
                 TX07: "Nein macht das nicht Celeste.",
                 TX08: "Das wäre doch zu viel für dich.",
-                TX09: "Ich weiß, dass du neben der Schule noch zum Volleyball-Training gehst und auf Grace aufpasst, wann ich immer zur Arbeit gehe.",
+                TX09: "Ich weiß, dass du neben der Schule noch zum Volleyball-Training gehst.",
                 TX10: "Du sollst auch noch Zeit für dich und deine Freunde haben.",
-                TX11: "Hmm da hast du recht, dann werde ich nächste Woche der Arbeit Bescheid geben.",
-                TX12: "Aber falls es für dich zu viel wird, dann gib mir da Bescheid. Ok?",
-                TX13: "Danke mein Schatz."
+                TX11: "Hmm da hast du recht.",
+                TX12: "Aber gib mir bitte Bescheid, falls es zu viel für dich wird.",
+                TX13: "Danke mein Schatz.",
+                TX14: "Dann werde ich nächste Woche der Arbeit Bescheid geben.",
+                TX15: "Ok?",
+                TX16: "Und auf Grace passt du auch noch auf, wann ich immer zur Arbeit gehen muss."
             }
         };
         // Code um die Meter-Bar auszublenden
         Novel.dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
-        //ƒS.Speech.setTickerDelays(40, 500);
         let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(1)]);
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]); //verzögert die Zeit zwischen den Texten
         Novel.ƒS.Sound.fade(Novel.music.main_theme, 0.3, 0.2, true);
@@ -133,13 +139,14 @@ var Novel;
         await signalDelay1();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
-        // await ƒS.Character.animate(characters.celeste_mum, characters.celeste_mum.pose.sad, examAnimation());
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX14);
         await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.sad, Novel.ƒS.positionPercent(70, 100));
         await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX02);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX15);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
@@ -149,22 +156,28 @@ var Novel;
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.smile, Novel.ƒS.positionPercent(30, 100));
         await Novel.ƒS.update(0.3);
+        await signalDelay1();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX07);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX08);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX07);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX08);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX09);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX16);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX09);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX11);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX12);
+        Novel.ƒS.Sound.play(Novel.sounds.hmm, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX11);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX14);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX12);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX15);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX13);
         await Novel.ƒS.Character.hide(Novel.characters.celeste_mum);
         await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.smile, Novel.ƒS.positionPercent(70, 100));
         await Novel.ƒS.update(0.3);
+        await signalDelay1();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX13);
         await signalDelay2();
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
@@ -194,7 +207,7 @@ var Novel;
             },
             evan: {
                 TX01: "Du hast wirklich gute Arbeit geleistet, Celeste.",
-                TX02: "Die Getränke hast du alle richtig gemischt und die Kunden waren ebenfalls zufrieden mit dir.",
+                TX02: "Die Getränke hast du alle richtig gemischt und die Kunden waren ebenfalls alle zufrieden mit dir.",
                 TX03: "Das heißt, dass du natürlich von uns eingestellt wirst und du die Stelle kriegst.",
                 TX04: "Also über deine heutige Leistung kann ich mich nicht beschweren.",
                 TX05: "Auf eine gute Zusammenarbeit, Celeste."
@@ -223,6 +236,7 @@ var Novel;
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_happy, Novel.ƒS.positionPercent(25, 100));
         await Novel.ƒS.update(0.3);
+        Novel.ƒS.Sound.play(Novel.sounds.chuckle_female, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX05);
@@ -245,11 +259,12 @@ var Novel;
                 TX03: "Ich bin so froh, dass ich den Job habe, jetzt muss du dir nicht mehr so viele Sorgen, um das Geld machen."
             },
             celeste_mum: {
-                TX01: "Das hat mich richtig erschreckt.",
-                TX02: "Was ist passiert?",
-                TX03: "Oh da, wofür du dich letzte Woche beworben hast?",
-                TX04: "Das freut mich, mein Schatz.",
-                TX05: "Ich bin richtig stolz auf dich."
+                TX01: "Celeste!",
+                TX02: "Erschreckt mich nicht so.",
+                TX03: "Was ist passiert?",
+                TX04: "Da wofür du dich letzte Woche beworben hast?",
+                TX05: "Das freut mich, dass du die Stelle bekommen hast mein Schatz.",
+                TX06: "Ich bin richtig stolz auf dich."
             }
         };
         Novel.dataForSave.pickedMeterScene = true;
@@ -270,13 +285,14 @@ var Novel;
         await Novel.ƒS.update(1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX02);
-        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX03);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX02);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX04);
         await Novel.ƒS.Character.hide(Novel.characters.celeste_mum);
         await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.happy, Novel.ƒS.positionPercent(70, 100));
         await Novel.ƒS.update(0.3);
-        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX05);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX06);
         Novel.ƒS.Sound.play(Novel.sounds.chuckle_female, 1.5);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
         await signalDelay2();
@@ -574,10 +590,10 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtons");
         buttonFunctions("Close");
         let scenes = [
-            { scene: Novel.scene_1, name: "Conversation with mum" },
-            { scene: Novel.scene_2, name: "School" },
-            { scene: Novel.scene_3, name: "Narrator" },
-            { scene: Novel.scene_4, name: "Talk with Evan" },
+            // { scene: scene_1, name: "Conversation with mum" },
+            // { scene: scene_2, name: "School" },
+            // { scene: scene_3, name: "Narrator" },
+            // { scene: scene_4, name: "Talk with Evan" },
             { scene: Novel.scene_5, name: "Mixing Drinks" },
             { id: "Final Round", scene: Novel.scene_5_2, name: "Mixing Drinks Final" },
             { id: "Good Ending", scene: Novel.scene_6, name: "First Ending" },
@@ -608,7 +624,7 @@ var Novel;
                 TX09: "Aber es tut mir ebenfalls leid, dass ich das Getränk falsch gemischt habe.",
                 TX10: "Die nächste Mischung wird auf jeden Fall richtig sein.",
                 TX11: "... das tut mir wirklich leid.",
-                TX12: "<i>Hmm, da bin ich gespannt, was er von meine Arbeit sagen wird.</i>",
+                TX12: "<i>Hmm da bin ich mal gespannt, was er über meine Leistung sagen wird.</i>",
                 TX13: "Ja, können wir gerne machen."
             },
             evan: {
@@ -638,9 +654,9 @@ var Novel;
                 TX08: "Das ist in Ordnung, solange ich ein neues bekomme.",
                 TX09: "Wenn ich das richtig höre, macht sie das zum ersten Mal.",
                 TX10: "Das schmeckt schon wieder schlecht.",
-                TX11: "Also, das kann ich nicht mehr so akzeptieren.",
+                TX11: "Also das kann ich nicht mehr so akzeptieren.",
                 TX12: "Das kann gar nicht sein.",
-                TX13: "Ich habe Ihnen öfters eine Chance gegeben."
+                TX13: "Ich habe ihnen sogar öfters eine Chance gegeben."
             }
         };
         let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(1)]);
@@ -668,13 +684,13 @@ var Novel;
                 Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
                 await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
                 let chooseSecondIngredient = {
-                    ingredientOne: "heißes Wasser",
+                    ingredientOne: "kochendes Wasser",
                     ingredientTwo: "Sahne"
                 };
                 let secondChoice = await Novel.ƒS.Menu.getInput(chooseSecondIngredient, "choicesDrinks");
                 switch (secondChoice) {
                     case chooseSecondIngredient.ingredientOne:
-                        console.log("heißes Wasser");
+                        console.log("kochendes Wasser");
                         Novel.dataForSave.celesteScore += 50;
                         console.log(Novel.dataForSave.celesteScore);
                         Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
@@ -769,13 +785,13 @@ var Novel;
                 Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
                 await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
                 let secondOptionIngredient = {
-                    ingredientOne: "heißes Wasser",
+                    ingredientOne: "kochendes Wasser",
                     ingredientTwo: "Sahne"
                 };
                 let secondRound = await Novel.ƒS.Menu.getInput(secondOptionIngredient, "choicesDrinks");
                 switch (secondRound) {
                     case secondOptionIngredient.ingredientOne:
-                        console.log("heißes Wasser");
+                        console.log("kochendes Wasser");
                         Novel.dataForSave.celesteScore += 50;
                         console.log(Novel.dataForSave.celesteScore);
                         Novel.ƒS.Sound.play(Novel.sounds.spoon_stir, 1);
@@ -827,6 +843,7 @@ var Novel;
                         await Novel.ƒS.update(1);
                         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX03);
                         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX04);
+                        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX05);
                         await Novel.ƒS.Character.hide(Novel.characters.celeste);
                         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_oh, Novel.ƒS.positionPercent(50, 100));
                         await Novel.ƒS.update(0.3);
@@ -872,7 +889,7 @@ var Novel;
                 TX03: "Oh, du hast eine falsche Zutat hinzugefügt.",
                 TX04: "Das nächste Mal besser darauf aufpassen.",
                 TX05: "Verstanden?",
-                TX06: "Celeste, alle Zutaten, die du gemischt hast, sind komplett falsch.",
+                TX06: "Celeste alle Zutaten, die du gemischt hast, sind komplett falsch.",
                 TX07: "Es tut mir leid, dass sie ein falsches Getränk von uns bekommen haben.",
                 TX08: "Sie werden direkt ein neues von uns kriegen.",
                 TX09: "Ich entschuldige mich nochmal aufrichtig für das falsche Getränk.",
@@ -881,13 +898,12 @@ var Novel;
             },
             customer: {
                 TX01: "Ich hätte gerne den <b>Schokotraum</b> bitte.",
-                TX01_2: "Hallo, ich hätte gerne einmal einen ... bitte.",
                 TX02: "Vielen Dank.",
                 TX03: "Das schmeckt richtig gut.",
                 TX04: "Hmm, das schmeckt ein bisschen anders.",
                 TX05: "Aber man kann es trinken.",
                 TX06: "Es tut mir leid, aber das schmeckt gar nicht gut.",
-                TX07: "Das ist gar nicht das Getränk, was ich mir bestellt habe.",
+                TX07: "Das ist gar nicht das Getränk, das ich mir bestellt habe.",
                 TX08: "Das ist in Ordnung, solange ich ein neues bekomme.",
                 TX09: "Wenn ich das richtig höre, macht sie das zum ersten Mal.",
                 TX10: "Das schmeckkt schon wieder schlecht.",
@@ -1086,7 +1102,8 @@ var Novel;
                 TX01: "Ich fand, dadurch dass du es zum ersten Mal gemacht hast, war deine Leistung durchschnittlich.",
                 TX02: "Es sind dir dennoch ein paar Fehler passiert.",
                 TX03: "Ich würde dich trotzdem einstellen, weil ich Potenzial in dir sehe und glaube, dass du besser wirst, je öfter du das machst.",
-                TX04: "Aber bei deinen nächsten Schichten, werde ich trotzdem da sein und es bei dir kontrollieren, damit bei dir nicht mehr so oft Fehler vorkommen."
+                TX04: "Aber bei deinen nächsten Schichten, werde ich trotzdem da sein, um ab und zu bei dir rüberzuschauen, damit du es auch richtig machst.",
+                TX05: "Auf diese Weise passieren dir nicht mehr so oft Fehler."
             }
         };
         Novel.dataForSave.pickedMeterScene = true;
@@ -1111,6 +1128,7 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX04);
+        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.cafe_happy, Novel.ƒS.positionPercent(25, 100));
@@ -1137,31 +1155,38 @@ var Novel;
                 TX01: "...",
                 TX02: "Oh sorry ich hab grad nicht aufgepasst.",
                 TX03: "Worüber habt ihr nochmal geredet?",
-                TX04: "Ich mache mir grad ständig Gedanken um meine Mum, seitdem sie mir ihre Situation erzählt hat.",
+                TX04: "Seitdem meine Mum mir ihre Situation erzählt hat, mache ich mir ständig Gedanken um sie.",
                 TX05: "Ihr geht es körperlich gerade nicht so gut, weil sie zurzeit sehr viel arbeitet.",
                 TX06: "Aus dem Grund hab ich ihr vorgeschlagen, dass ich mir einen Teilzeitjob suchen werde.",
-                TX07: "Aber ich finde grade keine guten Stellen.",
-                TX08: "Meinst du das Café bei dir in der Nähe?",
-                TX09: "Oh davon hab ich gar nicht gewusst.",
+                TX07: "Aber ich finde keine guten Stellen, wo ich mich bewerben kann.",
+                TX08: "Nein nicht wirklich.",
+                TX09: "Davon hab ich gar nicht gewusst.",
                 TX10: "Dann werde ich mich direkt dort bewerben.",
-                TX11: "Danke Lucia, du hast immer eine Lösung zu meinen Problemen."
+                TX11: "Danke Lucia!",
+                TX12: "Das ist doch nicht so einfach wie ich dachte.",
+                TX13: "Du hast immer eine Lösung zu meinen Problemen."
             },
             lucia: {
                 TX01: "Das hört sich echt cool an.",
                 TX02: "Hättet ihr Lust da mal vorbeizuschauen?",
                 TX03: "Wie sieht es bei dir aus Cel?",
                 TX04: "Cel?",
-                TX05: "Sophie hat einen Laden entdeckt mit vielen schönen Dekorationen und ich hab gefragt, ob wir alle mal hingehen wollen.",
-                TX06: "Aber ist eigentlich alles gut bei dir? Du bist in den letzten Tagen abwesend.",
+                TX05: "Sophie hat einen Laden neuen mit vielen schönen Dekorationen entdeckt und ich hab gefragt, ob wir alle mal hingehen wollen.",
+                TX06: "Aber ist eigentlich alles gut bei dir?",
                 TX07: "Worum ging es?",
                 TX08: "Hmm kennst du das Café <b>Lovely Java</b>?",
-                TX09: "Genau, ich hab gehört, dass sie zurzeit nach Aushilfen suchen.",
-                TX10: "Das wäre eine gute Möglichkeit für dich, vor allem weil das Gehalt dort sehr gut sein soll und der Laden beliebt ist.",
-                TX11: "Hab ich doch gern gemacht."
+                TX09: "Das ist ein Café bei mir in der Nähe.",
+                TX10: "Das wäre eine gute Möglichkeit für dich.",
+                TX11: "Hab ich doch gern gemacht.",
+                TX12: "Du wirkst in den letzten Tagen etwas abwesend.",
+                TX13: "Wenn es irgendetwas gibt, worüber du sprechen möchtest, bin ich gerne für dich da.",
+                TX14: "Ich hab gehört, dass sie zurzeit nach Aushilfen suchen.",
+                TX15: "Vor allem soll das Gehalt sehr gut sein und das Café ist ebenfalls beliebt."
             },
             sophie: {
-                TX01: "... da gibt es viele coole Sachen für dein Zimmer.",
-                TX02: "Ja klar."
+                TX01: "... der Laden ist noch neu.",
+                TX02: "Da gibt es bestimmt viele schöne Sachen für dein Zimmer.",
+                TX03: "Ja klar."
             }
         };
         Novel.dataForSave.pickedMeterScene = true;
@@ -1174,27 +1199,37 @@ var Novel;
         await Novel.ƒS.Character.show(Novel.characters.lucia, Novel.characters.lucia.pose.smile, Novel.ƒS.positionPercent(25, 100));
         await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.sophie, text.sophie.TX01);
+        await Novel.ƒS.Speech.tell(Novel.characters.sophie, text.sophie.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX02);
-        await Novel.ƒS.Speech.tell(Novel.characters.sophie, text.sophie.TX02);
+        await Novel.ƒS.Speech.tell(Novel.characters.sophie, text.sophie.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX03);
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.school, Novel.ƒS.positionPercent(70, 100));
         await Novel.ƒS.update(2);
+        await signalDelay2();
+        Novel.ƒS.Sound.play(Novel.sounds.sigh_female, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX04);
+        Novel.ƒS.Sound.play(Novel.sounds.oh, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX06);
+        await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX12);
+        await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX13);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX07);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX06);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX07);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX12);
+        Novel.ƒS.Sound.play(Novel.sounds.hmm, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX08);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX08);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX09);
+        await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX14);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX10);
+        await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX15);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX09);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX10);
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
@@ -1202,6 +1237,7 @@ var Novel;
         await Novel.ƒS.update(0.3);
         Novel.ƒS.Sound.play(Novel.sounds.chuckle_female, 1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX11);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX13);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX11);
         await signalDelay2();
         await Novel.ƒS.Character.hide(Novel.characters.celeste);
@@ -1220,19 +1256,20 @@ var Novel;
             celeste: {
                 TX01: "<i>Wow das Café sieht richtig schön aus.</i>",
                 TX02: "<i>Hier ist auch eine Menge los.</i>",
-                TX03: "<i>Ich muss den Chef Evan finden.</i>",
+                TX03: "<i>Aber ich muss jetzt erstmal den Chef Evan finden.</i>",
                 TX04: "<i>Er hat gemeint, dass wir uns am Tresen treffen werden.</i>",
-                TX05: "Entschuldigung, ich suche gerade nach ihrem Chef Evan.",
+                TX05: "Entschuldigung, ich suche nach ihrem Chef Evan.",
                 TX06: "Wir haben einen Termin vereinbart.",
-                TX07: "Ja genau, es freut mich auch Sie kennenzulernen.",
+                TX07: "Ja genau. ",
                 TX08: "<i>Ich muss also für die Kunden Getränke mischen, damit ich die Stelle bekomme.</i>",
-                TX09: "<i>Das werde ich auf jeden Fall hinkriegen.</i>",
+                TX09: "<i>Das werde ich auf jeden Fall hinkriegen!</i>",
                 TX10: "Ja ich habe alles verstanden.",
-                TX11: "Wir können direkt loslegen."
+                TX11: "Wir können direkt loslegen.",
+                TX12: "Es freut mich auch Sie kennenzulernen."
             },
             evan: {
-                TX01: "Ah Hallo du bist Celeste richtig?",
-                TX02: "Schön dich kennenzulernen, ich bin Evan.",
+                TX01: "Ah Hallo du musst bestimmt Celeste sein.",
+                TX02: "Schön dich kennenzulernen.",
                 TX03: "Wir haben bis jetzt wegen deiner Bewerbung nur telefoniert.",
                 TX04: "Du kannst mich gerne duzen.",
                 TX05: "Nun zu deiner Bewerbung.",
@@ -1243,7 +1280,8 @@ var Novel;
                 TX10: "Du kriegst eine Liste, wo drauf steht aus welchen Zutaten, die einzelnen Getränken und Kaffees bestehen.",
                 TX11: "Die Liste kannst du dir jederzeit anschauen, falls du nicht weiterweißt.",
                 TX12: "Hast du soweit alles verstanden?",
-                TX13: "Das höre ich doch gerne."
+                TX13: "Super das höre ich doch gerne.",
+                TX14: "Ich bin Evan."
             }
         };
         Novel.dataForSave.pickedMeterScene = true;
@@ -1254,6 +1292,7 @@ var Novel;
         Novel.ƒS.Sound.fade(Novel.music.cafe_theme, 0.2, 0.2, true);
         await Novel.ƒS.Location.show(Novel.locations.cafe);
         await Novel.ƒS.update(Novel.transition.cafe_strips.duration, Novel.transition.cafe_strips.alpha, Novel.transition.cafe_strips.edge);
+        await signalDelay1();
         Novel.ƒS.Sound.play(Novel.sounds.cafe_door, 1);
         await signalDelay2();
         await Novel.ƒS.update(1);
@@ -1269,8 +1308,10 @@ var Novel;
         await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX02);
+        await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX14);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX07);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX12);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.evan, text.evan.TX06);
@@ -1294,7 +1335,8 @@ var Novel;
         Novel.ƒS.Text.addClass("NovelPages");
         await Novel.ƒS.Text.print("Oben im Menü siehst du den Bereich <b>Getränkeliste</b>." +
             "<p>Auf die Liste kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst.</p>" +
-            "<p>Deine Leistung wird anhand eines Meter-Bars gemessen, da kannst immer du sehen, ob du die richtige Wahl getroffen hast.</p>" +
+            "<p>Deine Leistung wird anhand eines Meter-Bars gemessen.</p>" +
+            "<p>Da kannst immer du sehen, ob du die richtige Wahl getroffen hast.</p>" +
             "<p>Viel Erfolg!</p>");
         Novel.ƒS.Text.close();
         await Novel.ƒS.Character.hide(Novel.characters.evan);

@@ -12,7 +12,7 @@ namespace Novel {
             },
             evan: {
                 TX01: "Du hast wirklich gute Arbeit geleistet, Celeste.",
-                TX02: "Die Getränke hast du alle richtig gemischt und die Kunden waren ebenfalls zufrieden mit dir.",
+                TX02: "Die Getränke hast du alle richtig gemischt und die Kunden waren ebenfalls alle zufrieden mit dir.",
                 TX03: "Das heißt, dass du natürlich von uns eingestellt wirst und du die Stelle kriegst.",
                 TX04: "Also über deine heutige Leistung kann ich mich nicht beschweren.",
                 TX05: "Auf eine gute Zusammenarbeit, Celeste."
@@ -44,6 +44,7 @@ namespace Novel {
         await ƒS.Character.hide(characters.celeste);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.cafe_happy, ƒS.positionPercent(25, 100));
         await ƒS.update(0.3);
+        ƒS.Sound.play(sounds.chuckle_female, 1);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
         await ƒS.Speech.tell(characters.evan, text.evan.TX05);
