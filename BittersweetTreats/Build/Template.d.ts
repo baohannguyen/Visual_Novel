@@ -143,12 +143,10 @@ declare namespace Novel {
             name: string;
         };
     };
-    let items: {};
     let dataForSave: {
         celesteScore: number;
         pickedMeterScene: boolean;
     };
-    function examAnimation(): ƒS.AnimationDefinition;
     function increaseSound(): void;
     function decreaseSound(): void;
     function seeCredits(): void;

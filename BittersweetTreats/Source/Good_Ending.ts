@@ -5,7 +5,7 @@ namespace Novel {
         let text = {
             celeste: {
                 TX01: "Das freut mich zu hören.",
-                TX02: "Es hat auch Spaß gemacht.",
+                TX02: "Es hat auch richtig Spaß gemacht.",
                 TX03: "Aber was heißt das jetzt für mich?",
                 TX04: "Vielen Dank, dass ich den Job kriege. ",
                 TX05: "Sie werden es nicht bereuen mich eingestellt zu haben.",

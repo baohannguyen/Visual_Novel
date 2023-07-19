@@ -9,7 +9,7 @@ namespace Novel {
                 // TX03: "Hmm, was kommt nochmal als nächstes dran?",
                 TX04: "<i>Jetzt fehlt mir nur noch die zweite Zutat, das war glaub ich...</i>",
                 TX05: "Hier ihr Getränk.",
-                TX06: "Vielen Dank, das freut mich.",
+                TX06: "Vielen Dank, das freut mich zu hören.",
                 TX07: "Oh, das tut mir leid.",
                 TX08: "Ich werde beim nächsten Mal besser darauf achten.",
                 TX09: "Genau, ich mische die Getränke zum ersten Mal.",

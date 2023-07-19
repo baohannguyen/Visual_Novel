@@ -1,6 +1,6 @@
 namespace Novel {
     export async function scene_6_2(): ƒS.SceneReturn {
-        console.log("Good Ending");
+        console.log("Good Ending Part 2");
 
         let text = {
             celeste: {
@@ -33,7 +33,7 @@ namespace Novel {
         await ƒS.update(1);
         await signalDelay1();
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
-        ƒS.Sound.play(sounds.gasping, 1.9);
+        ƒS.Sound.play(sounds.gasping, 3);
         await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.shocked, ƒS.positionPercent(70, 100));
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX01);

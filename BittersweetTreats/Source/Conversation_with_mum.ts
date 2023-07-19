@@ -36,18 +36,18 @@ namespace Novel {
                 TX13: "Danke mein Schatz.",
                 TX14: "Dann werde ich nächste Woche der Arbeit Bescheid geben.",
                 TX15: "Ok?",
-                TX16: "Und auf Grace passt du auch noch auf, wann ich immer zur Arbeit gehen muss."
+                TX16: "Und auf Grace passt du auch noch auf, wenn ich immer zur Arbeit gehen muss."
 
             }
         };
 
-        // Code um die Meter-Bar auszublenden
+        // code to hide meter bar
         dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
 
        
         let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
-        let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]); //verzögert die Zeit zwischen den Texten
+        let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Sound.fade(music.main_theme, 0.3, 0.2, true);
         ƒS.Speech.hide();

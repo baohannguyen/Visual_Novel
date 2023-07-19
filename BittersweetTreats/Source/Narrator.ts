@@ -1,6 +1,7 @@
 namespace Novel {
     export async function scene_3(): ƒS.SceneReturn {
         console.log("Scene 3");
+        
         dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
 

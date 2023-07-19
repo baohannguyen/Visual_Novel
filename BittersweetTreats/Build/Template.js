@@ -117,14 +117,14 @@ var Novel;
                 TX13: "Danke mein Schatz.",
                 TX14: "Dann werde ich nächste Woche der Arbeit Bescheid geben.",
                 TX15: "Ok?",
-                TX16: "Und auf Grace passt du auch noch auf, wann ich immer zur Arbeit gehen muss."
+                TX16: "Und auf Grace passt du auch noch auf, wenn ich immer zur Arbeit gehen muss."
             }
         };
-        // Code um die Meter-Bar auszublenden
+        // code to hide meter bar
         Novel.dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
         let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(1)]);
-        let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]); //verzögert die Zeit zwischen den Texten
+        let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         Novel.ƒS.Sound.fade(Novel.music.main_theme, 0.3, 0.2, true);
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.living_room);
@@ -200,7 +200,7 @@ var Novel;
         let text = {
             celeste: {
                 TX01: "Das freut mich zu hören.",
-                TX02: "Es hat auch Spaß gemacht.",
+                TX02: "Es hat auch richtig Spaß gemacht.",
                 TX03: "Aber was heißt das jetzt für mich?",
                 TX04: "Vielen Dank, dass ich den Job kriege. ",
                 TX05: "Sie werden es nicht bereuen mich eingestellt zu haben.",
@@ -251,7 +251,7 @@ var Novel;
 var Novel;
 (function (Novel) {
     async function scene_6_2() {
-        console.log("Good Ending");
+        console.log("Good Ending Part 2");
         let text = {
             celeste: {
                 TX01: "Mamaa!",
@@ -280,7 +280,7 @@ var Novel;
         await Novel.ƒS.update(1);
         await signalDelay1();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
-        Novel.ƒS.Sound.play(Novel.sounds.gasping, 1.9);
+        Novel.ƒS.Sound.play(Novel.sounds.gasping, 3);
         await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.shocked, Novel.ƒS.positionPercent(70, 100));
         await Novel.ƒS.update(1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
@@ -310,6 +310,7 @@ var Novel;
     Novel.ƒ = FudgeCore;
     Novel.ƒS = FudgeStory;
     console.log("Bittersweet Treats starting");
+    // Transitions
     Novel.transition = {
         stripes: {
             duration: 1,
@@ -337,6 +338,7 @@ var Novel;
             edge: 0.2
         }
     };
+    // Soundeffects
     Novel.sounds = {
         chuckle_female: "Audio/Sound/chuckle_female.mp3",
         door_closing: "Audio/Sound/door_closing.mp3",
@@ -352,12 +354,14 @@ var Novel;
         talking_school: "Audio/Sound/talking_school.mp3",
         chatter_school: "Audio/Sound/chatter_school.mp3"
     };
+    // Music
     Novel.music = {
         main_theme: "Audio/Themes/Spring-Flowers.mp3",
         cafe_theme: "Audio/Themes/romantic.mp3",
         good_ending_theme: "Audio/Themes/Roa_Memories_new.mp3",
         normal_ending_theme: "Audio/Themes/Calm-and-Peaceful.mp3"
     };
+    // Locations
     Novel.locations = {
         classroom: {
             name: "Classroom",
@@ -371,10 +375,6 @@ var Novel;
             name: "Living Room",
             background: "Background/livingroom.png"
         },
-        // park: {
-        //     name: "Park",
-        //     background: "Background/park_evening.png"
-        // },
         street: {
             name: "Street Rain",
             background: "Background/street_rain.png"
@@ -388,6 +388,7 @@ var Novel;
             background: "Background/Narrator_screen.png"
         }
     };
+    // Characters
     Novel.characters = {
         narrator: {},
         celeste: {
@@ -441,29 +442,19 @@ var Novel;
             name: "Kunde"
         }
     };
-    Novel.items = {};
     Novel.dataForSave = {
         celesteScore: 0,
         pickedMeterScene: false
     };
-    // export function addAnimation(): ƒS.AnimationDefinition {
+    // export function examAnimation(): ƒS.AnimationDefinition {
     //     return {
-    //         start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
-    //         end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
-    //         duration: 1,
+    //         start: { translation: ƒS.positionPercent(120, 100) },
+    //         end: { translation: ƒS.positionPercent(70, 100) }, //Figur verschwindete, weil Transparenz = 0 ist 
+    //         duration: 3,
     //         playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
     //     };
     // }
-    function examAnimation() {
-        return {
-            start: { translation: Novel.ƒS.positionPercent(120, 100) },
-            end: { translation: Novel.ƒS.positionPercent(70, 100) },
-            duration: 3,
-            playmode: Novel.ƒS.ANIMATION_PLAYMODE.PLAYONCE
-        };
-    }
-    Novel.examAnimation = examAnimation;
-    // Menü
+    // Menu
     let menuButtons = {
         save: "Save",
         load: "Load",
@@ -474,7 +465,7 @@ var Novel;
         drinkList: "Getränkeliste"
     };
     let gameMenu;
-    //Lautstärke Anpassung
+    // control volume
     let volume = 2.0;
     function increaseSound() {
         if (volume >= 100)
@@ -491,8 +482,8 @@ var Novel;
         console.log("Test");
     }
     Novel.decreaseSound = decreaseSound;
-    // true = Menü ist offen 
     let menuIsOpen = true;
+    // Credits
     function seeCredits() {
         Novel.ƒS.Text.addClass("NovelPages");
         Novel.ƒS.Text.print("<b>Background</b>:" +
@@ -514,12 +505,14 @@ var Novel;
             "<p>- Music I Use: Bensound.com/free-music-for-videos</p>");
     }
     Novel.seeCredits = seeCredits;
+    // List of drinks
     function seeDrinkList() {
         Novel.ƒS.Text.addClass("NovelPages");
         Novel.ƒS.Text.print("Schokotraum: Kakaopulver und Milch" +
-            "<p>Schlafenszeit: Kaffeepulver und heißes Wasser</p>");
+            "<p>Schlafenszeit: Kaffeepulver und kochendes Wasser</p>");
     }
     Novel.seeDrinkList = seeDrinkList;
+    // Shortcuts
     function seeShortcuts() {
         Novel.ƒS.Text.addClass("NovelPages");
         Novel.ƒS.Text.print("S = Visual Novel wird gespeichert" +
@@ -555,7 +548,7 @@ var Novel;
                 break;
         }
     }
-    // Menü shortcuts
+    // Menu shortcuts
     document.addEventListener("keydown", hndKeyPress);
     async function hndKeyPress(_event) {
         switch (_event.code) {
@@ -611,6 +604,7 @@ var Novel;
 var Novel;
 (function (Novel) {
     async function scene_5_2() {
+        console.log("Scene 5_2");
         let text = {
             celeste: {
                 TX01: "Ja gerne, kommt sofort.",
@@ -630,7 +624,7 @@ var Novel;
             evan: {
                 TX01: "Super gemacht Celeste, alle Kunden waren zufrieden mit deinen Getränken.",
                 TX02: "Da kommt schon der nächste Kunde.",
-                TX03: "Oh, du hast eine falsche Zutat hinzugefügt.",
+                TX03: "Oh, du hast eine oder zwei falsche Zutaten hinzugefügt.",
                 TX04: "Das nächste Mal besser darauf aufpassen.",
                 TX05: "Verstanden?",
                 TX06: "Celeste, alle Zutaten, die du gemischt hast, sind komplett falsch.",
@@ -875,7 +869,7 @@ var Novel;
                 // TX03: "Hmm, was kommt nochmal als nächstes dran?",
                 TX04: "<i>Jetzt fehlt mir nur noch die zweite Zutat, das war glaub ich...</i>",
                 TX05: "Hier ihr Getränk.",
-                TX06: "Vielen Dank, das freut mich.",
+                TX06: "Vielen Dank, das freut mich zu hören.",
                 TX07: "Oh, das tut mir leid.",
                 TX08: "Ich werde beim nächsten Mal besser darauf achten.",
                 TX09: "Genau, ich mische die Getränke zum ersten Mal.",
@@ -1108,7 +1102,6 @@ var Novel;
         };
         Novel.dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
-        // let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         Novel.ƒS.Sound.fade(Novel.music.normal_ending_theme, 0.1, 0.2, true);
         Novel.ƒS.Speech.hide();
@@ -1171,13 +1164,13 @@ var Novel;
                 TX02: "Hättet ihr Lust da mal vorbeizuschauen?",
                 TX03: "Wie sieht es bei dir aus Cel?",
                 TX04: "Cel?",
-                TX05: "Sophie hat einen Laden neuen mit vielen schönen Dekorationen entdeckt und ich hab gefragt, ob wir alle mal hingehen wollen.",
+                TX05: "Sophie hat einen neuen Laden mit vielen schönen Dekorationen entdeckt und ich hab gefragt, ob wir alle mal hingehen wollen.",
                 TX06: "Aber ist eigentlich alles gut bei dir?",
                 TX07: "Worum ging es?",
                 TX08: "Hmm kennst du das Café <b>Lovely Java</b>?",
                 TX09: "Das ist ein Café bei mir in der Nähe.",
                 TX10: "Das wäre eine gute Möglichkeit für dich.",
-                TX11: "Hab ich doch gern gemacht.",
+                TX11: "Das hab ich doch gern gemacht.",
                 TX12: "Du wirkst in den letzten Tagen etwas abwesend.",
                 TX13: "Wenn es irgendetwas gibt, worüber du sprechen möchtest, bin ich gerne für dich da.",
                 TX14: "Ich hab gehört, dass sie zurzeit nach Aushilfen suchen.",

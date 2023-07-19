@@ -4,6 +4,7 @@ namespace Novel {
 
     console.log("Bittersweet Treats starting");
 
+    // Transitions
     export let transition = {
         stripes: {
             duration: 1,
@@ -33,6 +34,7 @@ namespace Novel {
 
     };
 
+    // Soundeffects
     export let sounds = {
         chuckle_female: "Audio/Sound/chuckle_female.mp3",
         door_closing: "Audio/Sound/door_closing.mp3",
@@ -49,6 +51,7 @@ namespace Novel {
         chatter_school: "Audio/Sound/chatter_school.mp3"
     };
 
+    // Music
     export let music = {
         main_theme: "Audio/Themes/Spring-Flowers.mp3",
         cafe_theme: "Audio/Themes/romantic.mp3",
@@ -57,6 +60,7 @@ namespace Novel {
 
     };
 
+    // Locations
     export let locations = {
         classroom: {
             name: "Classroom",
@@ -70,10 +74,6 @@ namespace Novel {
             name: "Living Room",
             background: "Background/livingroom.png"
         },
-        // park: {
-        //     name: "Park",
-        //     background: "Background/park_evening.png"
-        // },
         street: {
             name: "Street Rain",
             background: "Background/street_rain.png"
@@ -90,6 +90,7 @@ namespace Novel {
 
     };
 
+    // Characters
     export let characters = {
         narrator: {
 
@@ -158,35 +159,23 @@ namespace Novel {
 
     };
 
-    export let items = {
-
-    };
 
     export let dataForSave = {
-        celesteScore: 0, //Scores werden hier gespeichert
+        celesteScore: 0, 
         pickedMeterScene: false
 
     };
 
-    // export function addAnimation(): ƒS.AnimationDefinition {
+    // export function examAnimation(): ƒS.AnimationDefinition {
     //     return {
-    //         start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
-    //         end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
-    //         duration: 1,
+    //         start: { translation: ƒS.positionPercent(120, 100) },
+    //         end: { translation: ƒS.positionPercent(70, 100) }, //Figur verschwindete, weil Transparenz = 0 ist 
+    //         duration: 3,
     //         playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
     //     };
     // }
 
-    export function examAnimation(): ƒS.AnimationDefinition {
-        return {
-            start: { translation: ƒS.positionPercent(120, 100) },
-            end: { translation: ƒS.positionPercent(70, 100) }, //Figur verschwindete, weil Transparenz = 0 ist 
-            duration: 3,
-            playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
-        };
-    }
-
-    // Menü
+    // Menu
     let menuButtons = {
         save: "Save",
         load: "Load",
@@ -199,7 +188,7 @@ namespace Novel {
 
     let gameMenu: ƒS.Menu;
 
-    //Lautstärke Anpassung
+    // control volume
     let volume: number = 2.0;
 
     export function increaseSound(): void {
@@ -218,9 +207,9 @@ namespace Novel {
 
     }
 
-    // true = Menü ist offen 
     let menuIsOpen: boolean = true;
 
+    // Credits
     export function seeCredits(): void {
         ƒS.Text.addClass("NovelPages");
         ƒS.Text.print("<b>Background</b>:" +
@@ -245,14 +234,16 @@ namespace Novel {
         );
     }
 
+    // List of drinks
     export function seeDrinkList(): void {
         ƒS.Text.addClass("NovelPages");
         ƒS.Text.print("Schokotraum: Kakaopulver und Milch" +
-            "<p>Schlafenszeit: Kaffeepulver und heißes Wasser</p>"
+            "<p>Schlafenszeit: Kaffeepulver und kochendes Wasser</p>"
             );
         
     }
 
+    // Shortcuts
     export function seeShortcuts(): void {
         ƒS.Text.addClass("NovelPages");
         ƒS.Text.print("S = Visual Novel wird gespeichert" +
@@ -263,9 +254,6 @@ namespace Novel {
 
         );
     }
-
-
-
 
     async function buttonFunctions(_option: string): Promise<void> {
         console.log(_option);
@@ -295,7 +283,7 @@ namespace Novel {
         }
 
     }
-    // Menü shortcuts
+    // Menu shortcuts
     document.addEventListener("keydown", hndKeyPress);
     async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
         switch (_event.code) {

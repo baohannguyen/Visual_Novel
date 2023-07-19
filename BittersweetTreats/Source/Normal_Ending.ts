@@ -24,7 +24,6 @@ namespace Novel {
         dataForSave.pickedMeterScene = true;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
 
-        // let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
         ƒS.Sound.fade(music.normal_ending_theme, 0.1, 0.2, true);

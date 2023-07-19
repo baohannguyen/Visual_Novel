@@ -1,5 +1,7 @@
 namespace Novel {
     export async function scene_5_2(): ƒS.SceneReturn {
+        console.log("Scene 5_2");
+        
         let text = {
             celeste: {
                 TX01: "Ja gerne, kommt sofort.",
@@ -19,7 +21,7 @@ namespace Novel {
             evan: {
                 TX01: "Super gemacht Celeste, alle Kunden waren zufrieden mit deinen Getränken.",
                 TX02: "Da kommt schon der nächste Kunde.",
-                TX03: "Oh, du hast eine falsche Zutat hinzugefügt.",
+                TX03: "Oh, du hast eine oder zwei falsche Zutaten hinzugefügt.",
                 TX04: "Das nächste Mal besser darauf aufpassen.",
                 TX05: "Verstanden?",
                 TX06: "Celeste, alle Zutaten, die du gemischt hast, sind komplett falsch.",
