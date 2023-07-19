@@ -590,10 +590,10 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtons");
         buttonFunctions("Close");
         let scenes = [
-            // { scene: scene_1, name: "Conversation with mum" },
-            // { scene: scene_2, name: "School" },
-            // { scene: scene_3, name: "Narrator" },
-            // { scene: scene_4, name: "Talk with Evan" },
+            { scene: Novel.scene_1, name: "Conversation with mum" },
+            { scene: Novel.scene_2, name: "School" },
+            { scene: Novel.scene_3, name: "Narrator" },
+            { scene: Novel.scene_4, name: "Talk with Evan" },
             { scene: Novel.scene_5, name: "Mixing Drinks" },
             { id: "Final Round", scene: Novel.scene_5_2, name: "Mixing Drinks Final" },
             { id: "Good Ending", scene: Novel.scene_6, name: "First Ending" },
