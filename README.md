@@ -3,4 +3,5 @@
 ## Links 
 - [Visual Novel](https://baohannguyen.github.io/Visual_Novel/BittersweetTreats/BittersweetTreats.html)
 - [Quellcode](https://github.com/baohannguyen/Visual_Novel/tree/main/BittersweetTreats/Source)
-- [Konzept-Dokument]
+- [Konzept-Dokument](https://github.com/baohannguyen/Visual_Novel/tree/main/BittersweetTreats/Konzept)
+- [Zip-Datei]
