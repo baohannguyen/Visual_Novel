@@ -1,17 +1,5 @@
 declare namespace Novel {
-    function scene_8(): ƒS.SceneReturn;
-}
-declare namespace Novel {
-    function scene_1(): ƒS.SceneReturn;
-}
-declare namespace Novel {
     function scene_9(): ƒS.SceneReturn;
-}
-declare namespace Novel {
-    function scene_6(): ƒS.SceneReturn;
-}
-declare namespace Novel {
-    function scene_6_2(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     export import ƒ = FudgeCore;
@@ -154,20 +142,32 @@ declare namespace Novel {
     function seeShortcuts(): void;
 }
 declare namespace Novel {
+    function scene_1(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_2(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_3(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_4(): ƒS.SceneReturn;
+}
+declare namespace Novel {
     function scene_5_2(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     function scene_5(): ƒS.SceneReturn;
 }
 declare namespace Novel {
-    function scene_3(): ƒS.SceneReturn;
+    function scene_6(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_6_2(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     function scene_7(): ƒS.SceneReturn;
 }
 declare namespace Novel {
-    function scene_2(): ƒS.SceneReturn;
-}
-declare namespace Novel {
-    function scene_4(): ƒS.SceneReturn;
+    function scene_8(): ƒS.SceneReturn;
 }
