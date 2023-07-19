@@ -6,8 +6,6 @@ html, body {
   padding: 0px;
   background-color: black;
   overflow: hidden;
-  /* font-weight: normal; */
-  /* user-select: none; */
 }
 
 canvas {
@@ -89,6 +87,7 @@ speech content {
   position: absolute;
   border: none;
   border-radius: 20px;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
   background-color: #967259;
 }
 
@@ -129,7 +128,7 @@ speech content {
 }
 
 
-meter::-webkit-meter-bar { /*webkit ist für chrome */
+meter::-webkit-meter-bar { /*webkit is for chrome */
   background-color: white;
   box-shadow: 0 0 11px rgba(33,33,33,.2);
 }

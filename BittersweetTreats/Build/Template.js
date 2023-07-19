@@ -179,7 +179,6 @@ var Novel;
             return;
         volume -= 0.5;
         Novel.ƒS.Sound.setMasterVolume(volume);
-        console.log("Test");
     }
     Novel.decreaseSound = decreaseSound;
     let menuIsOpen = true;

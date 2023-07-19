@@ -203,7 +203,6 @@ namespace Novel {
             return;
         volume -= 0.5;
         ƒS.Sound.setMasterVolume(volume);
-        console.log("Test");
 
     }
 
