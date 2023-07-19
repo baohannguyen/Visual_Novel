@@ -23,7 +23,7 @@ namespace Novel {
             celeste_mum: {
                 TX01: "...",
                 TX02: "Hallo mein Schatz.",
-                TX03: "Nicht wirklich, in letzter Zeit fällt es mir schwer im Krankenhaus zu arbeiten, weil ich Schmerzen in mein Handgelenk habe.",
+                TX03: "Nicht wirklich, in letzter Zeit fällt es mir schwer im Krankenhaus zu arbeiten, weil ich Schmerzen in meinem Handgelenk habe.",
                 TX04: "Vor allem seit ich sie vor einem Monat gebrochen habe.",
                 TX05: "Darüber habe ich mir auch schon Gedanken gemacht.",
                 TX06: "Aber das wird finanziell schwierig für uns, wenn ich weniger arbeiten werde, weil sich mein Gehalt dadurch kürzen wird.",
