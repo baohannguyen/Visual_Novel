@@ -46,9 +46,7 @@ namespace Novel {
         rain: "Audio/Sound/rain.mp3",
         sigh_male: "Audio/Sound/sigh_male.mp3",
         sigh_female: "Audio/Sound/sigh_female.mp3",
-        spoon_stir: "Audio/Sound/spoon_stir_audio.mp3",
-        talking_school: "Audio/Sound/talking_school.mp3",
-        chatter_school: "Audio/Sound/chatter_school.mp3"
+        spoon_stir: "Audio/Sound/spoon_stir_audio.mp3"   
     };
 
     // Music
