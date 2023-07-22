@@ -80,7 +80,7 @@ namespace Novel {
             name: "Office",
             background: "Background/office3.png"
         },
-        blackScreen: {
+        narratorScreen: {
             name: "Narrator Talk",
             background: "Background/Narrator_screen.png"
         }

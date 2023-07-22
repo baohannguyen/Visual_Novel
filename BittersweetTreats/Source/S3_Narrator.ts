@@ -8,7 +8,7 @@ namespace Novel {
         let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
 
         ƒS.Speech.hide();
-        await ƒS.Location.show(locations.blackScreen);
+        await ƒS.Location.show(locations.narratorScreen);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
         await ƒS.update(1);
         await signalDelay1();
