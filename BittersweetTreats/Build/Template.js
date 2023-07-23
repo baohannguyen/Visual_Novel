@@ -50,9 +50,7 @@ var Novel;
         rain: "Audio/Sound/rain.mp3",
         sigh_male: "Audio/Sound/sigh_male.mp3",
         sigh_female: "Audio/Sound/sigh_female.mp3",
-        spoon_stir: "Audio/Sound/spoon_stir_audio.mp3",
-        talking_school: "Audio/Sound/talking_school.mp3",
-        chatter_school: "Audio/Sound/chatter_school.mp3"
+        spoon_stir: "Audio/Sound/spoon_stir_audio.mp3"
     };
     // Music
     Novel.music = {
@@ -83,7 +81,7 @@ var Novel;
             name: "Office",
             background: "Background/office3.png"
         },
-        blackScreen: {
+        narratorScreen: {
             name: "Narrator Talk",
             background: "Background/Narrator_screen.png"
         }
@@ -518,7 +516,7 @@ var Novel;
         document.getElementsByName("celesteScore").forEach(meterStuff => meterStuff.hidden = true);
         let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(1)]);
         Novel.ƒS.Speech.hide();
-        await Novel.ƒS.Location.show(Novel.locations.blackScreen);
+        await Novel.ƒS.Location.show(Novel.locations.narratorScreen);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
         await Novel.ƒS.update(1);
         await signalDelay1();

@@ -43,8 +43,6 @@ declare namespace Novel {
         sigh_male: string;
         sigh_female: string;
         spoon_stir: string;
-        talking_school: string;
-        chatter_school: string;
     };
     let music: {
         main_theme: string;
@@ -73,7 +71,7 @@ declare namespace Novel {
             name: string;
             background: string;
         };
-        blackScreen: {
+        narratorScreen: {
             name: string;
             background: string;
         };
